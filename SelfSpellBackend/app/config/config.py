@@ -8,18 +8,19 @@ class BaseConfig:
 class DevelopmentConfig(BaseConfig):
     """Development configuration."""
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:123@localhost/SelfSpell'
+
 
 class TestingConfig(BaseConfig):
     """Testing configuration."""
     DEBUG = True
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///testing.db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://yourPostgresUsername:yourPassword@localhost:5432/databaseName'
 
 class ProductionConfig(BaseConfig):
     """Production configuration."""
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///production.db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://yourPostgresUsername:yourPassword@localhost:5432/databaseName'
 
 
 def get_config_by_name(config_name):
