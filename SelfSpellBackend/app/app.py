@@ -4,7 +4,7 @@ from app.initialize_functions import initialize_route, initialize_db, initialize
 
 
 
-def create_app(config=None) -> Flask:
+def create_app(config='development') -> Flask:
     """
     Create a Flask application.
 
@@ -60,10 +60,10 @@ def calculate_hobby_distances():
     user_features = request.json.get('features')
     if not user_features:
         return jsonify({"error": "User features are required"}), 400
-    
+    age = request.json.get('age')
     # Query all hobbies from the database
-    hobbies = [    {"name": "Reading", "features": [1, 2, 3, 4, 5]},
-    {"name": "Cooking", "features": [1, 3, 2, 4, 5]},
+    hobbies = [    {"name": "Reading", "features": [1, 2, 3, 4, 5], "minAge": 10, "maxAge": 20},
+    {"name": "Cooking", "features": [1, 3, 2, 4, 5], "minAge": 10, "maxAge": 20},
     # Add more hobbies with their features
 ]  # This should be replaced with actual hobby data
     
@@ -74,9 +74,13 @@ def calculate_hobby_distances():
         # Ensure the lists have the same length
         if len(hobby_features) == len(user_features):
             distance = calculate_distance(user_features, hobby_features)
+            if age >= hobby["minAge"] and age <= hobby["maxAge"]:
+                isInRange = 0.5
+            else:
+                isInRange = -0.5
             hobby_distances.append({
                 "hobby": hobby.name,  # The hobby name
-                "distance": distance   # The calculated distance
+                "distance": distance+isInRange   # The calculated distance
             })
         else:
             # If the lengths of the features don't match, skip that hobby
