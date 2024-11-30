@@ -1,65 +1,87 @@
-import React, { useState, useEffect } from "react";
-import "../styles/ReflexGame.css"; // Import stylów
+import React, { useState} from "react";
+import "../styles/ReflexGame.css";
 
 const ReflexGame = () => {
+  const [stage, setStage] = useState(1); // Początkowy etap (1 = kwadrat, 2 = koło, 3 = trójkąt)
   const [startTime, setStartTime] = useState(null);
-  const [reactionTime, setReactionTime] = useState(null);
+  const [reactionTimes, setReactionTimes] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-  const [timeoutId, setTimeoutId] = useState(null);
+  const [shape, setShape] = useState(null); // Aktualny kształt
+  const [position, setPosition] = useState({ top: "50%", left: "50%" }); // Pozycja elementu
+
+  const shapes = ["square", "circle", "triangle"]; // Dostępne kształty
 
   const startGame = () => {
-    setReactionTime(null); // Resetuj wynik
-    setIsVisible(false); // Ukryj przycisk na start
-    const randomDelay = Math.floor(Math.random() * 2000) + 1000; // Losowe opóźnienie od 1 do 3 sekund
+    console.log("Game started");
+    setStage(1); // Ustaw etap na początek
+    setReactionTimes([]); // Reset wyników
+    nextRound(1); // Rozpocznij pierwszą próbę
+  };
 
-    const id = setTimeout(() => {
-      setStartTime(Date.now()); // Ustaw czas startu
-      setIsVisible(true); // Pokaż przycisk
+  const nextRound = (currentStage) => {
+    if (currentStage > 3) return; // Zakończenie gry po trzeciej próbie
+
+    setIsVisible(false); // Ukryj kształt przed pokazaniem nowego
+    const randomDelay = Math.floor(Math.random() * 4000) + 1000; // Losowe opóźnienie 1-5 sekund
+
+    console.log(`Stage: ${currentStage}`);
+    console.log(`Next shape will appear in ${randomDelay}ms`);
+
+    setTimeout(() => {
+      const randomPosition = {
+        top: `${Math.random() * 70 + 15}%`, // W zakresie 15-85% ekranu
+        left: `${Math.random() * 70 + 15}%`,
+      };
+      setPosition(randomPosition);
+      setShape(shapes[currentStage - 1]); // Ustaw właściwy kształt na podstawie etapu
+      setStartTime(Date.now());
+      setIsVisible(true);
+
+      console.log(`Shape: ${shapes[currentStage - 1]} at position`, randomPosition);
     }, randomDelay);
-
-    setTimeoutId(id); // Zapisz ID timeouta (do anulowania w razie potrzeby)
   };
 
   const handleClick = () => {
     if (isVisible) {
-      const endTime = Date.now(); // Czas kliknięcia
-      setReactionTime(endTime - startTime); // Oblicz czas reakcji
-      setIsVisible(false); // Ukryj przycisk
-      clearTimeout(timeoutId); // Wyczyść timeout
+      const endTime = Date.now();
+      const reactionTime = endTime - startTime;
+
+      console.log(`Reaction time: ${reactionTime}ms`);
+
+      setReactionTimes((prev) => [...prev, reactionTime]); // Dodaj wynik do listy
+      setIsVisible(false);
+
+      if (stage < 3) {
+        const nextStage = stage + 1;
+        setStage(nextStage); // Przejdź do kolejnego etapu
+        nextRound(nextStage); // Rozpocznij nową próbę
+      } else {
+        const averageTime =
+          [...reactionTimes, reactionTime].reduce((a, b) => a + b, 0) /
+          (reactionTimes.length + 1);
+
+        alert(`Gra zakończona! Średni czas reakcji: ${Math.round(averageTime)} ms`);
+        setStage(1); // Reset gry do pierwszego etapu
+      }
     }
   };
-
-  // Funkcja wysyłająca wynik do backendu
-  useEffect(() => {
-    if (reactionTime !== null) {
-      fetch("/api/save_reaction", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: "123", // Zamień na aktualny user ID
-          reaction_time: reactionTime,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log("Wynik zapisany:", data));
-    }
-  }, [reactionTime]);
 
   return (
     <div className="reflex-game">
       <h1>Test refleksu</h1>
-      {reactionTime !== null ? (
-        <h2>Twój czas reakcji: {reactionTime} ms</h2>
+      {stage === 1 && !isVisible ? (
+        <button className="start-button" onClick={startGame}>
+          Start
+        </button>
       ) : (
-        <p>Kliknij, gdy zobaczysz przycisk!</p>
+        <p>Kliknij w {shapes[stage - 1]}!</p>
       )}
-      <button className="start-button" onClick={startGame}>
-        Start
-      </button>
       {isVisible && (
-        <div className="clickable-box" onClick={handleClick}></div>
+        <div
+          className={`shape ${shape}`}
+          style={{ top: position.top, left: position.left }}
+          onClick={handleClick}
+        ></div>
       )}
     </div>
   );

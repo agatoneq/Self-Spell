@@ -8,6 +8,6 @@ import './styles/hobby-recommendations.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HobbyRecommendations />
+    <App />
   </StrictMode>,
 )
