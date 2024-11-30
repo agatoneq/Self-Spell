@@ -27,16 +27,116 @@ body {
 
 /* Header */
 
+
+/* Header */
+
 .header {
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--color-white);
+    padding: 15px 20px;
+    /* Reduced padding for smaller screens */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+
+/* Logo and Name */
 
 .logo-name {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+    /* Reduced gap for smaller screens */
+}
+
+.logo-name h1 {
+    color: var(--color-blue-purple);
+    font-size: 1.5rem;
+    /* Smaller font size for smaller screens */
+    margin: 0;
+}
+
+.logo-name img {
+    height: 40px;
+    /* Reduced size */
+    width: 40px;
+}
+
+
+/* Header Buttons */
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+    /* Reduced gap for smaller screens */
+}
+
+.header-buttons button {
+    background-color: var(--color-light-purple);
+    color: var(--color-white);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    /* Reduced button size */
+    font-size: 0.9rem;
+    /* Smaller font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header-buttons button:hover {
+    background-color: var(--color-blue-purple);
+}
+
+
+/* Responsive Design: Adjustments for Smaller Screens */
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        /* Stacks the elements vertically */
+        align-items: flex-start;
+        /* Aligns items to the left */
+        padding: 10px 15px;
+        /* Further reduce padding */
+    }
+    .header-buttons {
+        width: 100%;
+        /* Make buttons take up full width */
+        justify-content: space-between;
+        /* Spread buttons evenly */
+    }
+    .header-buttons button {
+        flex-grow: 1;
+        /* Ensures buttons resize proportionally */
+        text-align: center;
+        font-size: 0.8rem;
+        /* Even smaller font for narrow screens */
+    }
+    .logo-name h1 {
+        font-size: 1.2rem;
+        /* Smaller text size */
+    }
+    .logo-name img {
+        height: 35px;
+        /* Further reduce logo size */
+        width: 35px;
+    }
+}
+
+
+/* Logo and Name */
+
+.logo-name {
+    display: flex;
+    align-items: center;
+    /* Vertically aligns the logo and text */
     gap: 15px;
 }
 
@@ -59,6 +159,7 @@ body {
     padding: 20px;
     width: 90%;
     max-width: 800px;
+    padding-top: 100px;
 }
 
 .description {
