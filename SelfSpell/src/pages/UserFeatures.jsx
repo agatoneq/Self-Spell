@@ -45,8 +45,13 @@ const UserFeatures = () => {
                 user_id: savedFeatures.user_id,
                 features: savedFeatures.features,  // Send features as an array
             });
-    
+
+            // Log the response to console for debugging
+            console.log('Distances Response:', response.data);
+
+            // Set the distances state to the response data
             setDistances(response.data || []); // Ensure it's an array
+
         } catch (error) {
             if (error.response) {
                 setError(error.response.data.error || 'Something went wrong');
@@ -57,7 +62,6 @@ const UserFeatures = () => {
             setLoading(false); // Stop loading after request
         }
     };
-    
 
     return (
         <div>
@@ -81,6 +85,7 @@ const UserFeatures = () => {
                 {loading ? 'Calculating...' : 'Calculate Distances'}
             </button>
             {error && <p style={{ color: 'red' }}>{error}</p>}  {/* Display error message */}
+            
             <h2>Distances</h2>
             <ul>
                 {distances.length > 0 ? (
@@ -93,6 +98,14 @@ const UserFeatures = () => {
                     <p>No distances calculated yet.</p>
                 )}
             </ul>
+
+            {/* Optional: Display the distances in the console for debugging */}
+            {distances.length > 0 && (
+                <div>
+                    <h3>Debugging Distances in Console</h3>
+                    <pre>{JSON.stringify(distances, null, 2)}</pre>
+                </div>
+            )}
         </div>
     );
 };
