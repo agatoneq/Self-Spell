@@ -6,45 +6,88 @@ const hardcodedHobbies = [
     name: "Photography",
     description: "Capture moments and create memories.",
     image: "https://example.com/photography.jpg", // Replace with real image URL
+    distance: 2, // Default high distance to make sure it is not on top
+  },
+  {
+    name: "Cooking 2: Evectric Boogaloo",
+    description: "Create delicious meals and discover new recipes.",
+    image: "https://example.com/cooking.jpg", // Replace with real image URL
+    distance: 3, // Default high distance to make sure it is not on top
   },
   {
     name: "Cooking",
     description: "Create delicious meals and discover new recipes.",
     image: "https://example.com/cooking.jpg", // Replace with real image URL
+    distance: 1, // Default high distance to make sure it is not on top
   },
 ];
 
-const HobbyRecommendations = () => {
+const HobbyRecommendations = ({ userFeatures, userAge }) => {
   const [hobbies, setHobbies] = useState([]);
 
-  // Fetch hobbies from the API or fallback to hardcoded ones
   useEffect(() => {
-    const fetchHobbies = async () => {
+    const fetchDistances = async () => {
       try {
-        const response = await fetch("/todos"); // Ensure this matches the backend route
-        console.log(response);
+        /*
+        const response = await fetch("/calculate_distances", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            features: userFeatures,
+            age: userAge,
+          }),
+        });
+
         if (!response.ok) {
-          throw new Error("Failed to fetch hobbies from the API");
+          throw new Error("Failed to calculate distances from the API");
         }
+
         const data = await response.json();
 
-        // Map the API data to the expected format
-        const mappedHobbies = data.map((hobby) => ({
-          name: hobby.description,
-          description: hobby.description,
-          image: hobby.url,
-        }));
+        // Debug: log the API data to check distances
+        console.log("API Hobby Data:", data);
 
-        // Use the fetched hobbies or fallback if the API returns empty
-        setHobbies(mappedHobbies.length > 0 ? mappedHobbies : hardcodedHobbies);
+        // Map API data and ensure the distance is correctly formatted as a number
+        const apiHobbies = data
+          .filter((hobby) => typeof hobby.distance === "number") // Exclude invalid distances
+          .map((hobby) => ({
+            name: hobby.hobby,
+            description: hobby.hobby,
+            image: hobby.url || "https://example.com/placeholder.jpg", // Fallback image
+            distance: parseFloat(hobby.distance.toFixed(2)), // Ensure it's a float for proper sorting
+          }));
+*/
+        // Merge hardcoded hobbies with API data
+        const allHobbies = [
+          ...hardcodedHobbies.map((hobby) => ({ //zamienić w apiHobbies
+            ...hobby,
+            distance: parseFloat(hobby.distance), // Ensure hardcoded hobbies have numeric distances
+          })),
+        ];
+        console.log("Works");
+        // Debug: log the combined hobbies
+        console.log("Combined Hobbies:", allHobbies);
+
+        // Sort hobbies by distance (ascending)
+        const sortedHobbies = allHobbies.sort((a, b) => a.distance - b.distance);
+
+        // Debug: log the sorted hobbies
+        console.log("Sorted Hobbies:", sortedHobbies);
+
+        // Update state with sorted hobbies
+        setHobbies(sortedHobbies);
       } catch (error) {
-        console.error("Error fetching hobbies:", error);
-        setHobbies(hardcodedHobbies); // Fallback to hardcoded hobbies
+        console.error("Error fetching distances:", error);
+
+        // Fallback to hardcoded hobbies if API fails
+        setHobbies(hardcodedHobbies);
       }
     };
 
-    fetchHobbies();
-  }, []);
+    fetchDistances();
+  }, [userFeatures, userAge]);
 
   return (
     <section className="hobby-recommendations">
@@ -55,6 +98,9 @@ const HobbyRecommendations = () => {
             <img src={hobby.image} alt={hobby.name} />
             <h3>{hobby.name}</h3>
             <p>{hobby.description}</p>
+            <p>
+              <strong>Distance:</strong> {hobby.distance}
+            </p>
           </div>
         ))}
       </div>

@@ -5,9 +5,13 @@ import App from './App.jsx'
 import UserFeatures from './pages/UserFeatures.jsx'
 import HobbyRecommendations from './pages/HobbyRecomendations.jsx'
 import './styles/hobby-recommendations.css'
+import ChatGPTPrompt from './pages/testing_chat.jsx'
+
+const userFeatures = [0.8, 0.4, 0.1]; // Replace with the user's actual features
+const userAge = 25;
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HobbyRecommendations />
+    <ChatGPTPrompt/>
   </StrictMode>,
 )
