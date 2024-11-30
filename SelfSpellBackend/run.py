@@ -1,5 +1,5 @@
 import os
-
+from app.models.hobby import Hobby 
 from flask import jsonify
 from flask.cli import load_dotenv
 from app.app import create_app
@@ -9,6 +9,15 @@ load_dotenv()
 config=os.getenv('FLASK_ENV') or 'development'
 
 app = create_app(config)
+
+@app.route('/')
+def main_page():
+    return "hello"
+
+@app.route('/todos', methods=['GET'])
+def get_todos():
+    hobbies = Hobby.query.all()
+    return jsonify([{'id': hobby.id, 'description': hobby.description, 'characteristics': hobby.char, 'url': hobby.url} for hobby in hobbies])
 
 @app.route("/api/users", methods=["GET"])
 def users():
