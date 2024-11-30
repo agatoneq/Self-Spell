@@ -1,50 +1,26 @@
-.reflex-game {
-    text-align: center;
-    margin-top: 50px;
-    font-family: Arial, sans-serif;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    color: #4caf50;
-  }
-  
-  p {
-    font-size: 1.2rem;
-    color: #666;
-  }
-  
-  .start-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .start-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .clickable-box {
-    width: 100px;
-    height: 100px;
-    background-color: #f44336;
-    margin: 20px auto;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .clickable-box:hover {
-    background-color: #d32f2f;
-  }
-  
+.shape {
+  position: absolute;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid blue;
+}
