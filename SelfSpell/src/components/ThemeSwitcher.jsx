@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/ThemeSwitcher.css";
 
-const ThemeSwitcher = ({ toggle }) => {
+const ThemeSwitcher = () => {
   const [theme, setTheme] = useState(() => {
     // Sprawdź zapisany motyw w localStorage lub użyj domyślnego trybu.
     return localStorage.getItem("theme") || "dark";
@@ -27,13 +27,10 @@ const ThemeSwitcher = ({ toggle }) => {
           onChange={toggleTheme}
           className="sr-only"
         />
-        <span className="mr-[18px] text-sm font-medium text-black">
-          Switch Version
-        </span>
         <div className="shadow-card flex h-[46px] w-[82px] items-center justify-center rounded-md bg-white">
           <span
             className={`flex h-9 w-9 items-center justify-center rounded ${
-              theme != "dark" ? "bg-primary text-white" : "text-body-color"
+              theme == "light" ? "bg-primary text-white" : "bg-black"
             }`}
           >
             <svg
