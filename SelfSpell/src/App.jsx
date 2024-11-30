@@ -6,6 +6,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import ThemeSwitcher from '@components/ThemeSwitcher' 
 import ReflexGame from "./pages/ReflexGame";
 import HobbyRecommendations from './pages/HobbyRecomendations'
 
