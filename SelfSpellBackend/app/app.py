@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from app.config.config import get_config_by_name
 from app.initialize_functions import initialize_route, initialize_db, initialize_swagger
 
+
+
 def create_app(config=None) -> Flask:
     """
     Create a Flask application.
