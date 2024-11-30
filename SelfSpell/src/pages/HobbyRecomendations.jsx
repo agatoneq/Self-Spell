@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// Hardcoded fallback hobbies
+// Fallback hobbies in case the API is unreachable
 const hardcodedHobbies = [
   {
     name: "Photography",
@@ -17,16 +17,29 @@ const hardcodedHobbies = [
 const HobbyRecommendations = () => {
   const [hobbies, setHobbies] = useState([]);
 
-  // Fetch hobbies from the API or fallback to hardcoded
+  // Fetch hobbies from the API or fallback to hardcoded ones
   useEffect(() => {
     const fetchHobbies = async () => {
       try {
-        const response = await fetch("/api/hobbies"); // Replace with your actual API endpoint
+        const response = await fetch("/todos"); // Ensure this matches the backend route
+        console.log(response);
+        if (!response.ok) {
+          throw new Error("Failed to fetch hobbies from the API");
+        }
         const data = await response.json();
-        setHobbies(data.length > 0 ? data : hardcodedHobbies);
+
+        // Map the API data to the expected format
+        const mappedHobbies = data.map((hobby) => ({
+          name: hobby.description,
+          description: hobby.description,
+          image: hobby.url,
+        }));
+
+        // Use the fetched hobbies or fallback if the API returns empty
+        setHobbies(mappedHobbies.length > 0 ? mappedHobbies : hardcodedHobbies);
       } catch (error) {
         console.error("Error fetching hobbies:", error);
-        setHobbies(hardcodedHobbies); // Fallback in case of error
+        setHobbies(hardcodedHobbies); // Fallback to hardcoded hobbies
       }
     };
 
