@@ -50,7 +50,6 @@ hobbies = [
     Hobby(name="Cooking", features=[0.6, 0.3, -0.4, 0.2])
 ]
 
-@app.route('/calculate_distances', methods=['POST'])
 def calculate_hobby_distances():
     """
     Endpoint to calculate distances between user features and all hobbies.
