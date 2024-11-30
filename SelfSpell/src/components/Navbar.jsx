@@ -37,8 +37,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/reflexgame" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
-                Reflex Game
+              <Link to="/games" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
+                Gry
               </Link>
             </li>
             <li>

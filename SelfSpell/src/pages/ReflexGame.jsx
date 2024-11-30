@@ -1,7 +1,6 @@
 import { useState} from "react";
 import "../styles/ReflexGame.css";
 
-// Importowanie obrazów
 import cat1 from "../assets/cat1.png";
 import cat2 from "../assets/cat2.png";
 import cat3 from "../assets/cat3.png";
