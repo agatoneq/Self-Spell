@@ -60,18 +60,21 @@ def calculate_hobby_distances():
         return jsonify({"error": "User features are required"}), 400
     
     # Query all hobbies from the database
-    hobbies = []
+    hobbies = [    {"name": "Reading", "features": [1, 2, 3, 4, 5]},
+    {"name": "Cooking", "features": [1, 3, 2, 4, 5]},
+    # Add more hobbies with their features
+]  # This should be replaced with actual hobby data
     
     # Calculate the distance for each hobby
     hobby_distances = []
     for hobby in hobbies:
-        hobby_features = hobby.features
+        hobby_features = hobby.features  # Each hobby should have a `features` attribute
         # Ensure the lists have the same length
         if len(hobby_features) == len(user_features):
             distance = calculate_distance(user_features, hobby_features)
             hobby_distances.append({
-                "hobby": hobby.name,
-                "distance": distance
+                "hobby": hobby.name,  # The hobby name
+                "distance": distance   # The calculated distance
             })
         else:
             # If the lengths of the features don't match, skip that hobby

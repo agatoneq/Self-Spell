@@ -32,21 +32,20 @@ const UserFeatures = () => {
     const calculateDistances = async () => {
         setLoading(true); // Start loading
         setError(''); // Clear any previous error
-
         try {
             const savedFeatures = JSON.parse(localStorage.getItem('userFeatures')); // Retrieve saved features from localStorage
-
+    
             if (!savedFeatures) {
                 setError('No saved features found');
                 return;
             }
-
-            // Use the saved features for distance calculation (you can also send them to the backend here)
+    
+            // Use the saved features for distance calculation (send them to the backend)
             const response = await axios.post('http://localhost:5000/calculate_distances', {
                 user_id: savedFeatures.user_id,
-                features: savedFeatures.features,
+                features: savedFeatures.features,  // Send features as an array
             });
-
+    
             setDistances(response.data || []); // Ensure it's an array
         } catch (error) {
             if (error.response) {
@@ -58,6 +57,7 @@ const UserFeatures = () => {
             setLoading(false); // Stop loading after request
         }
     };
+    
 
     return (
         <div>
