@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./ReflexGame.css"; // Import stylów
+import "../styles/ReflexGame.css"; // Import stylów
 
 const ReflexGame = () => {
   const [startTime, setStartTime] = useState(null);
