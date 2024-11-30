@@ -1,7 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
 :root {
     --color-background: #1f2023;
     --color-foreground: #efefef;
@@ -9,35 +8,6 @@
 
 [data-theme="light"] {
     --color-background: #d4bcdc;
-    --color-foreground: #1f2023;
-    color: #213547;
-    background-color: #ffffff;
-}
-
-[data-theme="dark"] {
-    --color-background: #1f2023;
-    --color-foreground: #efefef;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-}
-
-body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-}
-
-:root {
-    --color-background: #1f2023;
-    --color-foreground: #efefef;
-}
-
-[data-theme="light"] {
-    --color-background: #fafafa;
     --color-foreground: #1f2023;
     color: #213547;
     background-color: #ffffff;
