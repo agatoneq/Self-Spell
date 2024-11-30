@@ -1,71 +1,15 @@
-/* General Styles */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* Topbar Styles */
-
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #67135e;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-.header .logo-name {
-    display: flex;
-    gap: 10px;
-}
-
-.header .logo-name h1 {
-    font-size: 1.5rem;
-    color: #d4bcdc;
-    margin: 0;
-}
-
-.header .header-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.header .header-buttons button {
-    background-color: #d4bcdc;
-    color: 67135e;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.header .header-buttons button:hover {
-    background-color: #3a4756;
-}
-
-
 /* Hobby Recommendations Styles */
 
 .hobby-recommendations {
-    padding: 100px 20px 20px;
-    /* Account for fixed topbar */
+    padding: 20px 20px 20px;
     text-align: center;
 }
 
 .hobby-recommendations h2 {
     font-size: 2rem;
-    color: #d4bcdc;
+    color: var(--color-foreground);
+    margin-bottom: 100px;
+    /* Use color from root for consistency */
 }
 
 .hobbies-container {
@@ -75,7 +19,8 @@ body {
 }
 
 .hobby-block {
-    background-color: #d4bcdc;
+    background-color: var(--color-foreground);
+    /* Align with theme color */
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -92,11 +37,13 @@ body {
 
 .hobby-block h3 {
     font-size: 1.2rem;
-    color: #67135e;
+    color: var(--color-background);
+    /* Use color from root for consistency */
 }
 
 .hobby-block p {
-    color: #67135e;
+    color: var(--color-background);
+    /* Use color from root for consistency */
 }
 
 

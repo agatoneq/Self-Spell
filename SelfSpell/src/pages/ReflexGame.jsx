@@ -1,43 +1,59 @@
 import { useState} from "react";
 import "../styles/ReflexGame.css";
 
+// Importowanie obrazów
+import cat1 from "../assets/cat1.png";
+import cat2 from "../assets/cat2.png";
+import cat3 from "../assets/cat3.png";
+
 const ReflexGame = () => {
-  const [stage, setStage] = useState(1); // Początkowy etap (1 = kwadrat, 2 = koło, 3 = trójkąt)
+  const [stage, setStage] = useState(1);
   const [startTime, setStartTime] = useState(null);
   const [reactionTimes, setReactionTimes] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-  const [shape, setShape] = useState(null); // Aktualny kształt
-  const [position, setPosition] = useState({ top: "50%", left: "50%" }); // Pozycja elementu
+  const [isStarted, setIsStarted] = useState(false);
+  const [image, setImage] = useState(null);
+  const [position, setPosition] = useState({ top: "50%", left: "50%" });
+  const [gameEnded, setGameEnded] = useState(false);
+  const [averageTime, setAverageTime] = useState(null);
+  const [instructionText, setInstructionText] = useState("Czekaj na kształt...");
 
-  const shapes = ["square", "circle", "triangle"]; // Dostępne kształty
+  const images = [cat1, cat2, cat3]; // Tablica z obrazkami
 
   const startGame = () => {
     console.log("Game started");
-    setStage(1); // Ustaw etap na początek
-    setReactionTimes([]); // Reset wyników
-    nextRound(1); // Rozpocznij pierwszą próbę
+    setIsStarted(true);
+    setStage(1);
+    setReactionTimes([]);
+    setGameEnded(false);
+    setAverageTime(null);
+    setInstructionText("Czekaj na magicznego kotka...");
+    nextRound(1);
   };
 
   const nextRound = (currentStage) => {
-    if (currentStage > 3) return; // Zakończenie gry po trzeciej próbie
+    if (currentStage > 9) {
+      return;
+    }
 
-    setIsVisible(false); // Ukryj kształt przed pokazaniem nowego
-    const randomDelay = Math.floor(Math.random() * 4000) + 1000; // Losowe opóźnienie 1-5 sekund
+    setIsVisible(false);
+    const randomDelay = Math.floor(Math.random() * 4000) + 1000;
 
     console.log(`Stage: ${currentStage}`);
-    console.log(`Next shape will appear in ${randomDelay}ms`);
+    console.log(`Next image will appear in ${randomDelay}ms`);
 
     setTimeout(() => {
       const randomPosition = {
-        top: `${Math.random() * 70 + 15}%`, // W zakresie 15-85% ekranu
+        top: `${Math.random() * 70 + 15}%`,
         left: `${Math.random() * 70 + 15}%`,
       };
       setPosition(randomPosition);
-      setShape(shapes[currentStage - 1]); // Ustaw właściwy kształt na podstawie etapu
+      setImage(images[currentStage % 3]);
       setStartTime(Date.now());
       setIsVisible(true);
+      setInstructionText("");
 
-      console.log(`Shape: ${shapes[currentStage - 1]} at position`, randomPosition);
+      console.log(`Image: ${images[currentStage % 3]} at position`, randomPosition);
     }, randomDelay);
   };
 
@@ -48,40 +64,59 @@ const ReflexGame = () => {
 
       console.log(`Reaction time: ${reactionTime}ms`);
 
-      setReactionTimes((prev) => [...prev, reactionTime]); // Dodaj wynik do listy
+      setReactionTimes((prev) => [...prev, reactionTime]);
       setIsVisible(false);
 
-      if (stage < 3) {
+      if (stage < 9) {
         const nextStage = stage + 1;
-        setStage(nextStage); // Przejdź do kolejnego etapu
-        nextRound(nextStage); // Rozpocznij nową próbę
+        setStage(nextStage);
+        nextRound(nextStage);
       } else {
-        const averageTime =
+        const finalAverageTime =
           [...reactionTimes, reactionTime].reduce((a, b) => a + b, 0) /
           (reactionTimes.length + 1);
 
-        alert(`Gra zakończona! Średni czas reakcji: ${Math.round(averageTime)} ms`);
-        setStage(1); // Reset gry do pierwszego etapu
+        setAverageTime(finalAverageTime);
+        setGameEnded(true);
+        setIsStarted(false);
       }
     }
   };
 
   return (
     <div className="reflex-game">
-      <h1>Test refleksu</h1>
-      {stage === 1 && !isVisible ? (
-        <button className="start-button" onClick={startGame}>
-          Start
-        </button>
-      ) : (
-        <p>Kliknij w {shapes[stage - 1]}!</p>
-      )}
-      {isVisible && (
-        <div
-          className={`shape ${shape}`}
-          style={{ top: position.top, left: position.left }}
-          onClick={handleClick}
-        ></div>
+      {!isStarted && !gameEnded ? (
+        <div className="instructions">
+          <h1>Sprawdź swój refleks</h1>
+          <p>
+            Po kliknięciu przycisku poniżej, kliknij w zwierzątko jak najszybciej potrafisz!
+          </p>
+          <button className="start-button" onClick={startGame}>
+            Jestem gotowy!
+          </button>
+        </div>
+      ) : null}
+
+      {isStarted && !gameEnded ? (
+        <>
+          <p className="info">{instructionText}</p>
+          {isVisible && (
+            <div
+              className="shape-container"
+              style={{ top: position.top, left: position.left }}
+              onClick={handleClick}
+            >
+              <img src={image} alt="shape" className="shape" />
+            </div>
+          )}
+        </>
+      ) : null}
+
+      {gameEnded && (
+        <div className="results">
+          <h2>Gra zakończona!</h2>
+          <p>Twój średni czas reakcji to: {Math.round(averageTime) / 1000} s</p>
+        </div>
       )}
     </div>
   );

@@ -1,26 +1,74 @@
-.shape {
-  position: absolute;
+.reflex-game {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.instructions,
+.results {
+  text-align: center;
+}
+
+.instructions h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.instructions p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.start-button,
+.restart-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transform: translate(-50%, -50%);
 }
 
-.square {
-  width: 100px;
-  height: 100px;
-  background-color: red;
+.start-button:hover,
+.restart-button:hover {
+  background-color: #218838;
 }
 
-.circle {
-  width: 100px;
-  height: 100px;
-  background-color: green;
-  border-radius: 50%;
+.info {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 100px solid blue;
+.shape-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+}
+
+.shape {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.results h2 {
+  font-size: 2rem;
+}
+
+.results p {
+  font-size: 1.5rem;
+}
+
+.shape-container img {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
 }
