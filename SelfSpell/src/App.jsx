@@ -2,6 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import ThemeSwitcher from '@components/ThemeSwitcher' 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import ReflexGame from "./pages/ReflexGame";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +16,11 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
+      <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+      <ThemeSwitcher toggle={true} />
+        <a href="/UserFeatures" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">
@@ -28,6 +39,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Router>
+            <Routes>
+                <Route exact path="/reflexgame" element={<ReflexGame />} />
+
+            </Routes>
+        </Router>
     </>
   )
 }
