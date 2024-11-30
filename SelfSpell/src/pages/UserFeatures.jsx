@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import axios from 'axios'; // Ensure axios is imported
+import { useState } from 'react';
+import axios from 'axios'; 
 
 const UserFeatures = () => {
     const [userId, setUserId] = useState('');
@@ -22,7 +22,7 @@ const UserFeatures = () => {
 
             alert("Features saved locally!");
         } catch (error) {
-            setError('Error saving user features');
+            setError('Error saving user features', error);
         } finally {
             setLoading(false); // Stop loading after request
         }

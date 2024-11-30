@@ -1,6 +1,5 @@
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import MainContent from './components/MainContent';
+import Layout from '@components/Layout';
+import {ThemeProvider} from '@components/ThemeProvider';
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -13,21 +12,16 @@ import HobbyRecommendations from './pages/HobbyRecomendations'
 function App() {
 
   return (
-    <>
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <MainContent />
-        <Footer />
-      </div>
-
+    <ThemeProvider>
       <Router>
-        <Routes>
-          <Route exact path="/reflexgame" element={<ReflexGame />} />
-          <Route exact path="/hobbyrecomendations" element={<HobbyRecommendations />} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route exact path="/reflexgame" element={<ReflexGame />} />
+            <Route exact path="/hobbyrecomendations" element={<HobbyRecommendations />} />
+          </Routes>
+        </Layout>
       </Router>
-    </>
-
+    </ThemeProvider>
   );
 };
 

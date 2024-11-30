@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { CiMenuFries } from "react-icons/ci";
+import ThemeSwitcher from './ThemeSwitcher';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,15 +11,20 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-blue-500 text-white p-4">
+    <header className="p-4">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold">Moja Aplikacja</h1>
-        <button
-          className="md:hidden block focus:outline-none"
-          onClick={toggleMenu}
-        >
-          <span className="material-icons">menu</span>
-        </button>
+        <div className="flex items-center space-x-4">
+          {/* Przycisk zmiany motywu */}
+          <ThemeSwitcher />
+          {/* Przycisk rozwijania menu */}
+          <button
+            className="md:hidden block focus:outline-none"
+            onClick={toggleMenu}
+          >
+            <CiMenuFries size={22} strokeWidth={2} />
+          </button>
+        </div>
         <nav
           className={`fixed top-0 left-0 h-full bg-blue-600 w-64 transform ${
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
@@ -24,19 +32,19 @@ const Navbar = () => {
         >
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-0">
             <li>
-              <a href="#home" className="hover:underline">
+              <Link to="/" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about" className="hover:underline">
-                About
-              </a>
+              <Link to="/reflexgame" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
+                Reflex Game
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="hover:underline">
-                Contact
-              </a>
+              <Link to="/hobbyrecomendations" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
+                Hobby Recommendations
+              </Link>
             </li>
           </ul>
         </nav>
