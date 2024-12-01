@@ -27,11 +27,18 @@ const ThemeSwitcher = () => {
           onChange={toggleTheme}
           className="sr-only"
         />
-        <div className="shadow-card flex h-[46px] w-[82px] items-center justify-center rounded-md bg-white">
+        <div
+          style={{
+            borderRadius: 30,
+            boxShadow:
+              theme === "light" ? "0 0 10px 0 rgba(0,0,0,0.5)" : "0 0 10px 0 rgba(255,255,255,0.5)",
+          }}
+          className={`shadow-card flex h-[46px] w-[82px] items-center justify-center rounded-md ${theme == "light" ? "bg-white" : "bg-black"
+            }`}>
           <span
-            className={`flex h-9 w-9 items-center justify-center rounded ${
-              theme == "light" ? "bg-primary text-white" : "bg-black"
-            }`}
+            style={{ borderRadius: 60 }}
+            className={`flex h-9 w-9 items-center justify-center rounded ${theme == "light" ? "text-white bg-black " : "text-black bg-black"
+              }`}
           >
             <svg
               width="16"
@@ -56,9 +63,9 @@ const ThemeSwitcher = () => {
             </svg>
           </span>
           <span
-            className={`flex h-9 w-9 items-center justify-center rounded ${
-              theme == "dark" ? "bg-primary text-white" : "text-body-color"
-            }`}
+            style={{ borderRadius: 60 }}
+            className={`flex h-9 w-9 items-center justify-center rounded ${theme == "dark" ? "bg-white text-black" : "text-white"
+              }`}
           >
             <svg
               width="16"

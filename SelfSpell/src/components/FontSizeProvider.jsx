@@ -9,11 +9,12 @@ export const useFontSize = () => useContext(FontSizeContext);
 export const FontSizeProvider = ({ children }) => {
   const [fontSize, setFontSize] = useState(16);
 
-  const increaseFontSize = () => setFontSize(prev => prev + 20);
-  const decreaseFontSize = () => setFontSize(prev => Math.max(prev - 20, 8));
+  const largeFontSize = () => setFontSize(16);
+  const mediumFontSize = () => setFontSize(20);
+  const sallFontSize = () => setFontSize(30);
 
   return (
-    <FontSizeContext.Provider value={{ fontSize, increaseFontSize, decreaseFontSize }}>
+    <FontSizeContext.Provider value={{ fontSize, largeFontSize, mediumFontSize, sallFontSize }}>
       {children}
     </FontSizeContext.Provider>
   );

@@ -1,14 +1,16 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
 :root {
     --color-background: #1f2023;
     --color-foreground: #efefef;
+    --font-family: "Roboto", sans-serif;
 }
 
 [data-theme="light"] {
     --color-background: #d4bcdc;
-    --color-foreground: #67135e;
+    font-family: var(--font-family);
     color: #213547;
     background-color: #ffffff;
 }
@@ -16,6 +18,7 @@
 [data-theme="dark"] {
     --color-background: #090909;
     --color-foreground: #e4ccec;
+    font-family: var(--font-family);
     color: rgba(255, 255, 255, 0.87);
     background-color: #0f0f0f;
 }
@@ -26,6 +29,55 @@ body {
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    font-family: var(--font-family);
     background-color: var(--color-background);
     color: var(--color-foreground);
 }
+
+.bg-palatinete{
+    background-color: #67135E;
+}
+
+.bg-rebeca-pupple{
+    background-color: #683F8F;
+}
+
+.bg-state-blue{
+    background-color: #686ABF;
+}
+
+.bg-african-violet{
+    background-color: #A979B9;
+}
+
+.bg-thistie{
+    background-color: #D4BCDC;
+}
+
+.text-palatinete{
+    color: #67135E;
+}
+
+.text-rebeca-pupple{
+    color: #683F8F;
+}
+
+.text-state-blue{
+    color: #686ABF;
+}
+
+.text-african-violet{
+    color: #A979B9;
+}
+
+.text-thistie{
+    color: #D4BCDC;
+}
+
+
+
+.bg-state-blue-gradient{
+    background:linear-gradient(rgba(104,106,191,0.5),transparent);
+    background-color: #A979B9;
+}
+
