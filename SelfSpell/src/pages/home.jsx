@@ -29,14 +29,14 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <h1 className="text-2xl font-bold mb-4 mt-3">Odkryj hobby, poznaj siebie,<br/>
+            <h1 className="text-2xl font-bold mb-4 mt-3" style={{ fontSize: `${fontSize}px` }}>Odkryj hobby, poznaj siebie,<br/>
 szukaj pasji w każdej glebie.<br/>
 Znajdź co cieszy, co rozwija,<br/>
 co twój świat na lepsze zmienia.</h1>
             <ButtonBasic text="Zaczynamy" onClick={handleNavigation} />
             <div className="relative items-center column-1 justify-center h-56 bg-custom-image py-2 my-5">
                 <div className="text-center mx-auto text-black">
-                    <h1 className="text-4xl font-bold mb-4">
+                    <h1 className="text-4xl font-bold mb-4" style={{ fontSize: `${fontSize}px` }}>
                         Dołącz do ponad 600 tysięcy użytkowników na całym świecie
                     </h1>
                 </div>
@@ -49,33 +49,33 @@ co twój świat na lepsze zmienia.</h1>
                         <FaStar />
                     </div>
                     <div className="justify-center align-middle">
-                        <h1 className="text-2xl font-bold mb-4">Ponad 50 000 recenzji 5-gwiazdkowych aplikacji</h1>
+                        <h1 className="text-2xl font-bold mb-4" style={{ fontSize: `${fontSize}px` }}>Ponad 50 000 recenzji 5-gwiazdkowych aplikacji</h1>
                     </div>
                 </div>
             </div>
             <div className="p-10">
                 {/* Nagłówek */}
                 <div className="text-center mb-10">
-                    <h2 className="text-3xl font-bold">Kreatywna Nauka</h2>
-                    <h3 className="text-xl font-semibold">Stała się Prosta</h3>
+                    <h2 className="text-3xl font-bold" style={{ fontSize: `${fontSize}px` }}>Kreatywna Nauka</h2>
+                    <h3 className="text-xl font-semibold" style={{ fontSize: `${fontSize}px` }}>Stała się Prosta</h3>
                 </div>
 
                 {/* Lista punktów */}
                 <div className="space-y-4 text-lg mb-10">
-                    <div className="flex items-center">
-                        <span className={`text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full stasis ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
+                    <div className="flex items-center" >
+                        <span style={{ fontSize: `${fontSize}px` }} className={`text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full stasis ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
                         Tysiące kreatywnych pomysłów na nowe hobby.
                     </div>
                     <div className="flex items-center">
-                        <span className={`text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full stasis ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
+                        <span style={{ fontSize: `${fontSize}px` }} className={`text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full stasis ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
                         Wybrane specjalnie dla twoich zainteresowań.
                     </div>
                     <div className="flex items-center">
-                        <span className={`text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full stasis ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
+                        <span style={{ fontSize: `${fontSize}px` }} className={`text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full stasis ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
                         Proste i zrozumiałe instrukcje krok po kroku.
                     </div>
                     <div className="flex items-center">
-                        <span className={`text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full stasis ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
+                        <span style={{ fontSize: `${fontSize}px` }} className={`text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full stasis ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
                         Dostępne za darmo na wszystkich urządzeniach.
                     </div>
                 </div>
@@ -84,19 +84,19 @@ co twój świat na lepsze zmienia.</h1>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                     <div className="bg-african-violet p-5 rounded-md">
                         <h4 className={`text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>600K+</h4>
-                        <p className="text-black">Użytkowników</p>
+                        <p style={{ fontSize: `${fontSize}px` }} className="text-black">Użytkowników</p>
                     </div>
                     <div className="bg-state-blue p-5 rounded-md">
                         <h4 className={`text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>6K+</h4>
-                        <p className="text-black">Hobby</p>
+                        <p style={{ fontSize: `${fontSize}px` }} className="text-black">Hobby</p>
                     </div>
                     <div className="bg-thistie p-5 rounded-md">
                         <h4 className={`text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>8K+</h4>
-                        <p className="text-black">Nauczycieli</p>
+                        <p  style={{ fontSize: `${fontSize}px` }}className="text-black">Nauczycieli</p>
                     </div>
                     <div className="bg-african-violet p-5 rounded-md">
                         <h4 className={`text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>4.8★</h4>
-                        <p className="text-black">Gwiazdek</p>
+                        <p style={{ fontSize: `${fontSize}px` }} className="text-black">Gwiazdek</p>
                     </div>
                 </div>
             </div>

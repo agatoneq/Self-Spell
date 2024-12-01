@@ -1,13 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/Games.css";
-import { useContext } from 'react';
 import { useFontSize } from "@components/FontSizeProvider";
-import { ThemeContext } from '@components/ThemeProvider'; // Upewnij się, że ścieżka jest poprawna
 import ButtonBasic from "@components/ButtonBasic";
 
 const Games = () => {
   const navigate = useNavigate();
-  const { theme } = useContext(ThemeContext); // Pobieramy aktualny motyw z kontekstu
   const { fontSize } = useFontSize(); // Pobieramy dynamiczny rozmiar czcionki
 
   const games = [
