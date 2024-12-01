@@ -31,34 +31,37 @@ const ReflexGame = () => {
     setReactionTimes([]);
     setGameEnded(false);
     setAverageTime(null);
-    setInstructionText("Czekaj na magicznego kotka...");
+    setInstructionText("Czekaj na czarodzieja...");
     nextRound(1);
   };
 
   const nextRound = (currentStage) => {
-    if (currentStage > 6) return;
+    if (currentStage > 6) {
+      return;
+    }
 
     setIsVisible(false);
-    const randomDelay = Math.floor(Math.random() * 4000) + 1000;
+    const randomDelay = Math.floor(Math.random() * 2000) + 1000;
 
     console.log(`Etap: ${currentStage}`);
     console.log(`Następny obrazek pojawi się za ${randomDelay}ms`);
 
     setTimeout(() => {
       const randomPosition = {
-        top: `${Math.random() * 70 + 15}%`,
-        left: `${Math.random() * 70 + 15}%`,
+        top: `${Math.random() * 50 + 15}%`, 
+        left: `${Math.random() * 50 + 15}%`,
       };
       setPosition(randomPosition);
-      const selectedImage = images[currentStage % 3]; // Zmienna do wybrania obrazka
-      setImage(selectedImage); // Ustawiamy obrazek
+      const selectedImage = images[currentStage % 3];
+      setImage(selectedImage);
       setStartTime(Date.now());
       setIsVisible(true);
       setInstructionText("");
 
       console.log(`Obrazek: ${selectedImage} w pozycji`, randomPosition);
     }, randomDelay);
-  };
+};
+
 
   const handleClick = () => {
     if (isVisible) {
@@ -72,7 +75,7 @@ const ReflexGame = () => {
 
       if (stage < 6) {
         const nextStage = stage + 1;
-        setStage(nextStage);
+        setStage(nextStage); 
         nextRound(nextStage);
       } else {
         const finalAverageTime =
@@ -103,6 +106,8 @@ const ReflexGame = () => {
         localStorage.setItem("userFeatures", JSON.stringify(userFeatures));
 
         console.log("Zaktualizowane cechy użytkownika:", userFeatures.features);
+        alert(`Gra zakończona! Średni czas reakcji: ${Math.round(averageTime)} ms`);
+        setStage(1);
       }
     }
   };

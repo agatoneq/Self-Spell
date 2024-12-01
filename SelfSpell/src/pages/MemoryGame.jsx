@@ -9,15 +9,14 @@ const MemoryGame = () => {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const cardImages = [
-    "cat1.png",
     "cat2.png",
-    "cat3.png",
-    "cat4.png",
-    "cat5.png",
-    "cat6.png",
+    "memory2.png",
+    "memory7.png",
+    "memory4.png",
+    "memory5.png",
+    "memory6.png",
   ];
 
-  // Shuffle cards and initialize
   useEffect(() => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
@@ -99,11 +98,8 @@ const MemoryGame = () => {
       </div>
       {matchedPairs === cardImages.length && (
         <div className="game-over">
-          <h2>Gratulacje! Ukończyłeś grę!</h2>
+          <h2>Gratulacje!</h2>
           <p>Ukończyłeś grę w {moves} ruchach.</p>
-          <button onClick={() => window.location.reload()}>
-            Zagraj ponownie
-          </button>
         </div>
       )}
     </div>
