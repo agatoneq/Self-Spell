@@ -4,7 +4,7 @@
 
 :root {
     --color-background: #1f2023;
-    --color-foreground: #efefef;
+    --color-foreground: #ffffff;
     --font-family: "Roboto", sans-serif;
 }
 
@@ -12,7 +12,7 @@
     --color-background: #efefef;
     font-family: var(--font-family);
     color: "black";
-    background-color: #efefef;
+    background-color: #ffffff;
 }
 
 [data-theme="dark"] {

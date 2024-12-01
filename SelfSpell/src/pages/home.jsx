@@ -17,13 +17,19 @@ const HomePage = () => {
 
     return (
         <div className="container mx-auto text-center">
-            <div className="relative flex items-center justify-center h-56 ">
+            <div className="relative flex items-center justify-center h-56 mt-8 ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold mb-4">Odkryj hobby,</h1>
                     <h1 className="text-5xl font-bold mb-4">poznaj siebie</h1>
                 </div>
             </div>
-            <h1 className="text-2xl font-bold mb-4">Lorem ipsum dolor sit amet.</h1>
+            <div className="relative flex items-center justify-center h-64">
+                <div className="bg-custom_representative-bg-image w-full h-full flex items-center justify-center">
+                    <div className="bg-custom_representative-image h-full w-20">
+                    </div>
+                </div>
+            </div>
+            <h1 className="text-2xl font-bold mb-4 mt-3">Lorem ipsum dolor sit amet.</h1>
 
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6" style={{ fontSize: `${fontSize}px` }}>
                 To jest strona główna. Znajdziesz tutaj najważniejsze informacje o naszej aplikacji.
@@ -31,8 +37,8 @@ const HomePage = () => {
             <ButtonBasic text="Odkryj więcej" onClick={handleNavigation} />
             <div className="relative items-center column-1 justify-center h-56 bg-custom-image py-10 my-10">
                 <div className="text-center mx-auto text-black">
-                    <h1 className="text-4xl font-bold mb-4" 
-                        >Join over 1 million users worldwide
+                    <h1 className="text-4xl font-bold mb-4"
+                    >Join over 1 million users worldwide
                     </h1>
                 </div>
                 <div className="text-center text-black">
@@ -63,27 +69,27 @@ const HomePage = () => {
                         Thousands of creative classes. Beginner to pro.
                     </div>
                     <div className="flex items-center">
-                    <span className={` text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
-                    Taught by creative pros and industry icons.
+                        <span className={` text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
+                        Taught by creative pros and industry icons.
                     </div>
                     <div className="flex items-center">
-                    <span className={` text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
-                    Learning Paths to help you achieve your goals.
+                        <span className={` text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
+                        Learning Paths to help you achieve your goals.
                     </div>
                     <div className="flex items-center">
-                    <span className={` text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
-                    Certificates to celebrate your accomplishments.
+                        <span className={` text-2xl mr-2 w-16 bg-african-violet p-2 rounded-full ${theme === 'dark' ? 'text-black' : 'text-white'}`}>✔</span>
+                        Certificates to celebrate your accomplishments.
                     </div>
                 </div>
 
                 {/* Statystyki */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                     <div className="bg-african-violet p-5 rounded-md">
-                    <h4 className={` text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>600K+</h4>
+                        <h4 className={` text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>600K+</h4>
                         <p className="text-black">Members</p>
                     </div>
                     <div className="bg-state-blue p-5 rounded-md">
-                    <h4 className={` text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>25K+</h4>
+                        <h4 className={` text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>25K+</h4>
                         <p className="text-black">Classes</p>
                     </div>
                     <div className="bg-thistie p-5 rounded-md">
@@ -91,7 +97,7 @@ const HomePage = () => {
                         <p className="text-black">Teachers</p>
                     </div>
                     <div className="bg-african-violet p-5 rounded-md">
-                    <h4 className={` text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>4.8 ★★★★★</h4>
+                        <h4 className={` text-2xl font-bold ${theme === 'dark' ? 'text-black' : 'text-white'}`}>4.8 ★★★★★</h4>
                         <p className="text-black">App Store Rating</p>
                     </div>
                 </div>

@@ -1,3 +1,39 @@
+.bg-reflex-bg-image {
+  background-image: url('../assets/background_reflex.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-reflex-image {
+  background-image: url('../assets/Standing.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-patience-bg-image {
+  background-image: url('../assets/background_patience.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-custom_representative-image {
+  background-image: url('../assets/Standing.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-custom_representative-bg-image {
+  background-image: url('../assets/background_home_page.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-custom_representative-image {
+  background-image: url('../assets/Standing.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .games {
     padding: 20px;
     text-align: center;

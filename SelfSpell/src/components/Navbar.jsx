@@ -41,7 +41,8 @@ const Navbar = () => {
               <AiOutlineClose size={24} />
             </button>
           </div>
-          <ul className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-4 p-4 md:p-0 text-left">
+          {/* Flex column added for vertical alignment */}
+          <ul className="flex flex-col space-y-8 p-4 text-left">
             <li>
               <Link
                 to="/"
@@ -52,25 +53,13 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link
-                to="/reflexgame"
-                className="hover:underline text-white"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Reflex Game
-              </Link>
-
-              <Link to="/games" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/games" className="hover:underline text-white" onClick={() => setIsMenuOpen(false)}>
                 Gry
               </Link>
             </li>
             <li>
-              <Link
-                to="/hobbyrecomendations"
-                className="hover:underline text-white"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Hobby Recommendations
+              <Link to="/hobbyrecomendations" className="hover:underline text-white" onClick={() => setIsMenuOpen(false)}>
+                Polecane hobby
               </Link>
             </li>
           </ul>

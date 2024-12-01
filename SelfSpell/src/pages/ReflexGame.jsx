@@ -46,6 +46,7 @@ const ReflexGame = () => {
 
     setIsVisible(false);
 
+
     // Skrócenie czasu oczekiwania (zmniejszamy minimalny czas opóźnienia)
     const randomDelay = Math.floor(Math.random() * 1000) + 500;  // Czas od 500ms do 1500ms
 
@@ -59,6 +60,7 @@ const ReflexGame = () => {
         left: `${Math.random() * 30 + 10}%`, // Losowe pozycje w zakresie 10%-40%
       };
       setPosition(randomPosition);
+
       const selectedImage = images[currentStage % images.length];  // Używamy całej tablicy obrazków
       setImage(selectedImage);
       setStartTime(Date.now());
@@ -66,6 +68,7 @@ const ReflexGame = () => {
       setInstructionText("");
 
       console.log(`Obrazek: ${selectedImage} w pozycji`, randomPosition);
+
     }, randomDelay);
   };
 
@@ -75,7 +78,6 @@ const ReflexGame = () => {
       const reactionTime = endTime - startTime;
 
       console.log(`Czas reakcji: ${reactionTime}ms`);
-
       setReactionTimes((prev) => [...prev, reactionTime]);
       setIsVisible(false);
 
@@ -84,6 +86,9 @@ const ReflexGame = () => {
         setStage(nextStage); 
         nextRound(nextStage);
       } else {
+
+        endGame([...reactionTimes, reactionTime]);
+
         const finalAverageTime =
           [...reactionTimes, reactionTime].reduce((a, b) => a + b, 0) /
           (reactionTimes.length + 1);
@@ -114,6 +119,31 @@ const ReflexGame = () => {
         console.log("Zaktualizowane cechy użytkownika:", userFeatures.features);
       }
     }
+  };
+
+  const endGame = (finalReactionTimes) => {
+    const finalAverageTime =
+      finalReactionTimes.reduce((a, b) => a + b, 0) / finalReactionTimes.length;
+
+    setAverageTime(finalAverageTime);
+    setGameEnded(true);
+    setIsStarted(false);
+
+    // Update user features based on average reaction time
+    const userFeatures =
+      JSON.parse(localStorage.getItem("userFeatures")) || Array(10).fill(0.0);
+
+    const updatedFeatures = userFeatures.map((feature, index) => {
+      const avgTimeFactor = (finalAverageTime / 1000 - 0.3) / 10; // Normalize for a baseline time of 300ms
+      let newFeature = feature - constFeatures[index] * avgTimeFactor;
+
+      // Keep feature within bounds
+      return Math.max(-1.0, Math.min(1.0, newFeature));
+    });
+
+    localStorage.setItem("userFeatures", JSON.stringify(updatedFeatures));
+
+    console.log("Updated user features:", updatedFeatures);
   };
 
   return (
@@ -148,7 +178,7 @@ const ReflexGame = () => {
       {gameEnded && (
         <div className="results">
           <h2>Gra zakończona!</h2>
-          <p>Twój średni czas reakcji to: {Math.round(averageTime) / 1000} s</p>
+          <p>Twój średni czas reakcji to: {(averageTime / 1000).toFixed(3)} s</p>
         </div>
       )}
     </div>

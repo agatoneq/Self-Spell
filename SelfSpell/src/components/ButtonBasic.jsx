@@ -4,7 +4,7 @@ const ButtonBasic = ({ text, ...props }) => {
   return (
     <button
       {...props}
-      className="bg-state-blue-gradient border-primary border rounded-md inline-flex items-center justify-center py-3 px-7 text-center text-base font-medium text-white hover:bg-[#1B44C8] hover:border-[#1B44C8] disabled:bg-gray-3 disabled:border-gray-3 disabled:text-dark-5 active:bg-[#1B44C8] active:border-[#1B44C8]"
+      className="bg-state-blue-gradient border-primary rounded-md inline-flex items-center justify-center py-3 px-7 text-center text-base font-medium text-white disabled:bg-gray-3 disabled:border-gray-3 disabled:text-dark-5 active:bg-[#1B44C8] active:border-[#1B44C8]"
     >
       {text}
     </button>
