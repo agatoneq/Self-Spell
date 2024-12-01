@@ -1,0 +1,67 @@
+/* General Styles */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+}
+
+
+/* Button Styles */
+
+.back-button {
+    background-color: transparent;
+    border: 2px solid var(--color-background);
+    padding: 8px 16px;
+    font-size: 16px;
+    color: var(--color-background);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 20px;
+}
+
+.back-button:hover {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+}
+
+
+/* Hobby Details Section */
+
+.hobby-details {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color-foreground);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hobby-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--color-background);
+}
+
+.hobby-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.hobby-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: var(--color-background);
+}
+
+.hobby-details-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-background);
+}

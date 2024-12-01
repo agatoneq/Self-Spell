@@ -12,7 +12,7 @@ const HomePage = () => {
     const { fontSize } = useFontSize(); // Pobieramy dynamiczny rozmiar czcionki
 
     const handleNavigation = () => {
-        navigate('/home');
+        navigate('/questionnaire');
     };
 
     return (

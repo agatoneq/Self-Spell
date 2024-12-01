@@ -1,0 +1,57 @@
+/* Slider styles */
+
+input[type="range"] {
+    width: 100%;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    /* Removes default styling in some browsers */
+    appearance: none;
+    background-color: var(--color-background);
+    height: 8px;
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 8px;
+    border-radius: 5px;
+    background-color: var(--color-foreground);
+}
+
+input[type="range"]::-moz-range-track {
+    height: 8px;
+    border-radius: 5px;
+    background-color: var(--color-foreground);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-foreground);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-foreground);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]:focus {
+    outline: none;
+}
+
+input[type="range"]:disabled {
+    cursor: not-allowed;
+}
+
+
+/* Hide numbers under sliders */
+
+input[type="range"]+span {
+    display: none;
+}
