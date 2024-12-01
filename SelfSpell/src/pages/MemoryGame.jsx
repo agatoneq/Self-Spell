@@ -18,7 +18,7 @@ const MemoryGame = () => {
   ];
 
   const featureWeights = [
-    0.1, -0.3, 0.2, -0.5, 0.3, -0.2, 0.4, 0.1, -0.4, 0.3,
+    0.1, -0.3, 1.2, 0.5, -0.3, 0, 0.1, -0.1, -0.1, 0,
   ];
 
   useEffect(() => {
@@ -100,7 +100,6 @@ const MemoryGame = () => {
 
         // Save updated features back to localStorage
         localStorage.setItem("userFeatures", JSON.stringify(newFeatures));
-        console.log("Updated user features:", newFeatures);
       };
 
       updateUserFeatures();
