@@ -1,3 +1,9 @@
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+}
+
 /* Hobby Recommendations Styles */
 
 .hobby-recommendations {
@@ -10,17 +16,19 @@
     color: var(--color-foreground);
     margin-bottom: 100px;
     /* Use color from root for consistency */
+
 }
 
 .hobbies-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
+    /* Only one item per row */
     gap: 20px;
 }
 
 .hobby-block {
     background-color: var(--color-foreground);
-    /* Align with theme color */
+
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -38,20 +46,21 @@
 .hobby-block h3 {
     font-size: 1.2rem;
     color: var(--color-background);
-    /* Use color from root for consistency */
+
 }
 
 .hobby-block p {
     color: var(--color-background);
-    /* Use color from root for consistency */
+
 }
 
 
 /* Responsive Design */
 
-@media (max-width: 768px) {
+@media (max-width: 2000px) {
     .hobbies-container {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: 1fr;
+        /* Ensure only one item per row even on smaller screens */
     }
     .hobby-block {
         padding: 12px;

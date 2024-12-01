@@ -10,6 +10,9 @@ import {
 import ReflexGame from "./pages/ReflexGame";
 import HomePage from "./pages/home";
 import HobbyRecommendations from './pages/HobbyRecomendations'
+import Games from './pages/Games'
+import PatienceGame from './pages/PatienceGame'
+import MemoryGame from './pages/MemoryGame'
 
 function App() {
 
@@ -19,8 +22,11 @@ function App() {
         <Router>
           <Layout>
             <Routes>
-              <Route exact path="/reflexgame" element={<ReflexGame />} />
-              <Route exact path="/hobbyrecomendations" element={<HobbyRecommendations />} />
+            <Route exact path="/games" element={<Games />} />
+            <Route exact path="/hobbyrecomendations" element={<HobbyRecommendations />} />
+            <Route exact path="/reflexgame" element={<ReflexGame />} />
+            <Route exact path="/patiencegame" element={<PatienceGame />} />
+            <Route exact path="/memorygame" element={<MemoryGame />} />
               <Route path="/" element={<HomePage />} />
             </Routes>
           </Layout>

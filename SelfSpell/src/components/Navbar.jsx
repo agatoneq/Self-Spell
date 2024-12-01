@@ -29,18 +29,17 @@ const Navbar = () => {
         </div>
 
         <nav
-          className={`fixed top-0 left-0 h-full w-64 bg-state-blue-gradient transform ${
-            isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform shadow-lg z-50`}
+          className={`fixed top-0 left-0 h-full w-64 bg-state-blue-gradient transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+            } transition-transform shadow-lg z-50`}
         >
           {/* Ikona zamknięcia (tylko na mobilnych) */}
           <div className="mb-14 w-full h-14">
-          <button
-            className="absolute top-4 right-4 text-white focus:outline-none md:hidden"
-            onClick={toggleMenu}
-          >
-            <AiOutlineClose size={24} />
-          </button>
+            <button
+              className="absolute top-4 right-4 text-white focus:outline-none md:hidden"
+              onClick={toggleMenu}
+            >
+              <AiOutlineClose size={24} />
+            </button>
           </div>
           <ul className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-4 p-4 md:p-0 text-left">
             <li>
@@ -59,6 +58,10 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Reflex Game
+              </Link>
+
+              <Link to="/games" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
+                Gry
               </Link>
             </li>
             <li>

@@ -12,7 +12,7 @@
     --color-background: #d4bcdc;
     font-family: var(--font-family);
     color: #213547;
-    background-color: #ffffff;
+    background-color: #d4bcdc;
 }
 
 [data-theme="dark"] {
