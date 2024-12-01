@@ -34,7 +34,7 @@ const HomePage = () => {
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6" style={{ fontSize: `${fontSize}px` }}>
                 To jest strona główna. Znajdziesz tutaj najważniejsze informacje o naszej aplikacji.
             </p>
-            <ButtonBasic text="Odkryj więcej" onClick={handleNavigation} />
+            <ButtonBasic text="Zaczynamy" onClick={handleNavigation} />
             <div className="relative items-center column-1 justify-center h-56 bg-custom-image py-10 my-10">
                 <div className="text-center mx-auto text-black">
                     <h1 className="text-4xl font-bold mb-4"

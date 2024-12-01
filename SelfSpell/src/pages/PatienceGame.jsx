@@ -9,7 +9,7 @@ const PatienceGame = () => {
   const [score, setScore] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
   const [message, setMessage] = useState("");
-  const constFeatures = [-1.2, 1.5, -1.1, 1.3, 1.0, 1.6, -1.7, 1.8, 2.0, 1.4]; // Feature weights
+  const constFeatures = [0.2, 0.8, 0.5, 0.3, 0, 0.1, 0, 0, 0.1, -0.1]; // Feature weights
 
   useEffect(() => {
     let colorInterval;
@@ -23,9 +23,9 @@ const PatienceGame = () => {
         setCurrentColor(randomColor);
         console.log("Kolor zmieniony na:", randomColor);
 
-        if (randomColor === "green") {
+        if (randomColor === "#22cc22") {
           setTimeout(() => {
-            setCurrentColor("red");
+            setCurrentColor("#cc2222");
           }, greenDuration);
         }
       }, redDuration);
@@ -79,7 +79,6 @@ const PatienceGame = () => {
 
     localStorage.setItem("userFeatures", JSON.stringify(updatedFeatures));
 
-    console.log("Updated user features:", updatedFeatures);
   };
   const navigate = useNavigate();
 

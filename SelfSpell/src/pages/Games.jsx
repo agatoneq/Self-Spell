@@ -42,8 +42,8 @@ const Games = () => {
     <div className="game-selection mb-10">
       <h1 className="text-2xl font-bold mb-4 mt-3">Wybierz grę</h1>
 
-      <p className={`text-lg mx-3 mb-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ fontSize: `${fontSize}px` }}>
-        To jest strona główna. Znajdziesz tutaj najważniejsze informacje o naszej aplikacji.
+      <p className={`text-lg mx-3 mb-6 box`} style={{ fontSize: `${fontSize}px` }}>
+        Wybierz jedną z gier, aby zacząć poznawać siebie i swoje umiejętności.
       </p>
       <div className="game-list">
         {games.map((game) => (

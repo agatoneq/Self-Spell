@@ -1,45 +1,50 @@
 .bg-reflex-bg-image {
-  background-image: url('../assets/background_reflex.png');
-  background-size: cover;
-  background-position: center;
-  background-color: transparent; /* Zapewnia przezroczystość */
+    background-image: url('../assets/background_reflex.png');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    /* Zapewnia przezroczystość */
 }
 
 .bg-reflex-image {
-  background-image: url('../assets/Standing-reflex.png');
-  background-size: cover;
-  background-position: center;
-  background-color: transparent; /* Zapewnia przezroczystość */
+    background-image: url('../assets/Standing-reflex.png');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    /* Zapewnia przezroczystość */
 }
 
 .bg-patience-bg-image {
-  background-image: url('../assets/background_patience.png');
-  background-size: cover;
-  background-position: center;
-  background-color: transparent; /* Zapewnia przezroczystość */
+    background-image: url('../assets/background_patience.png');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    /* Zapewnia przezroczystość */
 }
 
 .bg-patience-image {
-  background-image: url('../assets/Standing-memory.png');
-  background-size: cover;
-  background-position: center;
-  background-color: transparent; /* Zapewnia przezroczystość */
+    background-image: url('../assets/Standing-memory.png');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    /* Zapewnia przezroczystość */
 }
 
 .bg-memory-bg-image {
-  background-image: url('../assets/background_memory.png');
-  background-size: cover;
-  background-position: center;
-  background-color: transparent; /* Zapewnia przezroczystość */
+    background-image: url('../assets/background_memory.png');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    /* Zapewnia przezroczystość */
 }
 
 .bg-memory-image {
-  background-image: url('../assets/Standing-patience.png');
-  background-size: cover;
-  background-position: center;
-  background-color: transparent; /* Zapewnia przezroczystość */
+    background-image: url('../assets/Standing-patience.png');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    /* Zapewnia przezroczystość */
 }
-
 
 .games {
     padding: 20px;
@@ -70,23 +75,26 @@
 .game-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  }
-  
-  .game-card h2 {
+}
+
+.game-card h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-  }
-  
-  .game-card p {
+}
+
+.game-card p {
     font-size: 1rem;
     color: #555;
     margin-bottom: 20px;
-  }
+}
 
-  
-  .locked {
+.locked {
     color: #d9534f;
     font-weight: bold;
     font-size: 1rem;
     margin-top: 10px;
+}
+
+.box {
+    color: var(--color-foreground);
 }
