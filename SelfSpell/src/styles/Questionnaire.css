@@ -7,6 +7,7 @@ input[type="range"] {
     /* Removes default styling in some browsers */
     appearance: none;
     background-color: var(--color-background);
+    /* Background matches theme */
     height: 8px;
     border-radius: 5px;
 }
@@ -15,6 +16,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     height: 8px;
     border-radius: 5px;
     background-color: var(--color-foreground);
+    /* Track matches theme foreground */
 }
 
 input[type="range"]::-moz-range-track {
@@ -29,8 +31,11 @@ input[type="range"]::-webkit-slider-thumb {
     width: 20px;
     height: 20px;
     background-color: var(--color-foreground);
+    /* Thumb matches theme foreground */
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    /* Subtle shadow for better visibility */
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -39,14 +44,13 @@ input[type="range"]::-moz-range-thumb {
     background-color: var(--color-foreground);
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
 
 input[type="range"]:focus {
     outline: none;
-}
-
-input[type="range"]:disabled {
-    cursor: not-allowed;
+    box-shadow: 0 0 6px var(--color-foreground);
+    /* Focus glow */
 }
 
 
@@ -54,4 +58,12 @@ input[type="range"]:disabled {
 
 input[type="range"]+span {
     display: none;
+}
+
+.firstline {
+    margin-bottom: 20px;
+}
+
+.box {
+    width: 90%;
 }
