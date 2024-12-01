@@ -27,7 +27,7 @@ const hardcodedHobbies = [
     features: [0.1, 0.3, -0.4, 0.7, 0.5, 0.2, -0.6, 0.4, 0.2, 0.1],
   },
   {
-    name: "Wędkoawnie",
+    name: "Wędkarstwo",
     description: "Ukojenie pośród spokoju natury, satysfakcja z udanych połowów.",
     features: [0.5, 0.8, -0.2, 0.4, -0.1, 0.7, -0.3, 0.6, 0.1, -0.2],
     className: "bg-fishing",
