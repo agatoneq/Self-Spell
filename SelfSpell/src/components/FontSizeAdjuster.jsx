@@ -1,22 +1,27 @@
 import { useFontSize } from './FontSizeProvider';
 
 const FontSizeAdjuster = () => {
-  const { fontSize, increaseFontSize, decreaseFontSize } = useFontSize();
+  const { largeFontSize, mediumFontSize, sallFontSize } = useFontSize();
 
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center mr-5">
       <button
-        onClick={decreaseFontSize}
-        className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+        onClick={largeFontSize}
+        className=""
       >
-        Zmniejsz czcionkę
+        A
       </button>
-      <span className="text-lg">Rozmiar czcionki: {fontSize}px</span>
       <button
-        onClick={increaseFontSize}
-        className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+        onClick={mediumFontSize}
+        className="text-2xl ml-3 mr-3"
       >
-        Zwiększ czcionkę
+        A
+      </button>
+      <button
+        onClick={sallFontSize}
+        className="text-3xl"
+      >
+        A
       </button>
     </div>
   );
