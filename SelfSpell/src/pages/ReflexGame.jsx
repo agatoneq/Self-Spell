@@ -4,6 +4,9 @@ import "../styles/ReflexGame.css";
 import cat1 from "../assets/cat1.png";
 import cat2 from "../assets/cat2.png";
 import cat3 from "../assets/cat3.png";
+import memory2 from "../assets/memory2.png";
+import memory6 from "../assets/memory6.png";
+import memory5 from "../assets/memory5.png";
 
 const ReflexGame = () => {
   const [stage, setStage] = useState(1);
@@ -15,9 +18,10 @@ const ReflexGame = () => {
   const [position, setPosition] = useState({ top: "50%", left: "50%" });
   const [gameEnded, setGameEnded] = useState(false);
   const [averageTime, setAverageTime] = useState(null);
-  const [instructionText, setInstructionText] = useState("Czekaj na kształt...");
+  const [instructionText, setInstructionText] = useState("Czekaj na czarodzieja...");
 
-  const images = [cat1, cat2, cat3]; // Tablica z obrazkami
+  // Zaktualizowana tablica obrazków z 6 różnymi obrazkami
+  const images = [cat1, cat2, cat3, memory2, memory5, memory6];
 
   // Const array with feature values for each stage
   const constFeatures = [
@@ -41,18 +45,21 @@ const ReflexGame = () => {
     }
 
     setIsVisible(false);
-    const randomDelay = Math.floor(Math.random() * 2000) + 1000;
+
+    // Skrócenie czasu oczekiwania (zmniejszamy minimalny czas opóźnienia)
+    const randomDelay = Math.floor(Math.random() * 1000) + 500;  // Czas od 500ms do 1500ms
 
     console.log(`Etap: ${currentStage}`);
     console.log(`Następny obrazek pojawi się za ${randomDelay}ms`);
 
     setTimeout(() => {
+      // Losowe pozycjonowanie obrazków, ale teraz obrazki są bardziej wyśrodkowane na ekranie
       const randomPosition = {
-        top: `${Math.random() * 50 + 15}%`, 
-        left: `${Math.random() * 50 + 15}%`,
+        top: `${Math.random() * 30 + 10}%`,  // Losowe pozycje w zakresie 10%-40%
+        left: `${Math.random() * 30 + 10}%`, // Losowe pozycje w zakresie 10%-40%
       };
       setPosition(randomPosition);
-      const selectedImage = images[currentStage % 3];
+      const selectedImage = images[currentStage % images.length];  // Używamy całej tablicy obrazków
       setImage(selectedImage);
       setStartTime(Date.now());
       setIsVisible(true);
@@ -60,8 +67,7 @@ const ReflexGame = () => {
 
       console.log(`Obrazek: ${selectedImage} w pozycji`, randomPosition);
     }, randomDelay);
-};
-
+  };
 
   const handleClick = () => {
     if (isVisible) {
@@ -106,8 +112,6 @@ const ReflexGame = () => {
         localStorage.setItem("userFeatures", JSON.stringify(userFeatures));
 
         console.log("Zaktualizowane cechy użytkownika:", userFeatures.features);
-        alert(`Gra zakończona! Średni czas reakcji: ${Math.round(averageTime)} ms`);
-        setStage(1);
       }
     }
   };
