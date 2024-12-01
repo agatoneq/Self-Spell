@@ -17,6 +17,10 @@ const MemoryGame = () => {
     "memory6.png",
   ];
 
+  const featureWeights = [
+    0.1, -0.3, 0.2, -0.5, 0.3, -0.2, 0.4, 0.1, -0.4, 0.3,
+  ];
+
   useEffect(() => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
@@ -75,6 +79,33 @@ const MemoryGame = () => {
       }
     }
   }, [flippedCards]);
+
+  useEffect(() => {
+    if (matchedPairs === cardImages.length) {
+      // Adjust the user's features when the game is complete
+      const updateUserFeatures = () => {
+        const userFeatures = JSON.parse(localStorage.getItem("userFeatures"));
+        if (!userFeatures || userFeatures.length !== 10) {
+          console.error("Invalid user features in localStorage");
+          return;
+        }
+
+        const newFeatures = userFeatures.map((feature, index) => {
+          // Use the current index to get the corresponding feature weight
+          const newFeature = feature - (moves - 10) * 0.1 * featureWeights[index];
+        
+          // Ensure the feature stays within the range [-1, 1]
+          return Math.max(Math.min(newFeature, 1), -1);
+        });
+
+        // Save updated features back to localStorage
+        localStorage.setItem("userFeatures", JSON.stringify(newFeatures));
+        console.log("Updated user features:", newFeatures);
+      };
+
+      updateUserFeatures();
+    }
+  }, [matchedPairs, moves]);
 
   return (
     <div className="memory-game">
