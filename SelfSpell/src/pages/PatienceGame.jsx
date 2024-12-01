@@ -20,9 +20,9 @@ const PatienceGame = () => {
         setCurrentColor(randomColor);
         console.log("Kolor zmieniony na:", randomColor);
 
-        if (randomColor === "green") {
+        if (randomColor === "#22cc22") {
           setTimeout(() => {
-            setCurrentColor("red");
+            setCurrentColor("#cc2222");
           }, greenDuration);
         }
       }, redDuration);
