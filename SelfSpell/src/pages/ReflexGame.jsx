@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "../styles/ReflexGame.css";
-
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import ButtonBasic from "@components/ButtonBasic";
 import cat1 from "../assets/cat1.png";
 import cat2 from "../assets/cat2.png";
 import cat3 from "../assets/cat3.png";
@@ -83,7 +85,7 @@ const ReflexGame = () => {
 
       if (stage < 6) {
         const nextStage = stage + 1;
-        setStage(nextStage); 
+        setStage(nextStage);
         nextRound(nextStage);
       } else {
 
@@ -105,7 +107,8 @@ const ReflexGame = () => {
           const avgTimeFactor = (finalAverageTime / 1000 - 1) / 20; // Convert ms to seconds
           let newFeature = feature - constFeatures[index] * avgTimeFactor
           if (newFeature < -1.) {
-            newFeature = -1.;}
+            newFeature = -1.;
+          }
           if (newFeature > 1.) {
             newFeature = 1.;
           }
@@ -146,17 +149,34 @@ const ReflexGame = () => {
     console.log("Updated user features:", updatedFeatures);
   };
 
+  const navigate = useNavigate();
+
+
   return (
     <div className="reflex-game">
+      <div className=" w-full">
+        <button
+          className="absolute top-4 left-4 focus:outline-none md:hidden"
+          onClick={() => navigate("/games")}
+        >
+          <FaArrowLeft size={24} />
+        </button>
+      </div>
       {!isStarted && !gameEnded ? (
         <div className="instructions">
+
+          <div className="relative flex items-center justify-center h-64">
+            <div className={` w-full h-full flex items-center justify-center bg-reflex-bg-image`}>
+              <div className={` h-full w-28 bg-reflex-icon`}>
+              </div>
+            </div>
+          </div>
           <h1>Sprawdź swój refleks</h1>
           <p>
             Po kliknięciu przycisku poniżej, kliknij w zwierzątko jak najszybciej potrafisz!
           </p>
-          <button className="start-button" onClick={startGame}>
-            Jestem gotowy!
-          </button>
+          <ButtonBasic text="Jestem gotowy!" onClick={startGame} />
+
         </div>
       ) : null}
 
@@ -176,9 +196,17 @@ const ReflexGame = () => {
       ) : null}
 
       {gameEnded && (
-        <div className="results">
-          <h2>Gra zakończona!</h2>
-          <p>Twój średni czas reakcji to: {(averageTime / 1000).toFixed(3)} s</p>
+        <div className="results mb-40">
+          <div className="relative flex items-center justify-center h-64">
+            <div className={` w-full h-full flex items-center justify-center`}>
+              <div className={` h-full w-72 bg-congrats`}>
+              </div>
+            </div>
+          </div>
+          <h2 className="mt-10 mb-4">Gra zakończona!</h2>
+          <p className="mb-10">Twój średni czas reakcji to: {(averageTime / 1000).toFixed(3)} s</p>
+          <ButtonBasic text="Zobacz rekomendowane hobby" onClick={() => navigate("/hobbyrecomendations")} />
+
         </div>
       )}
     </div>

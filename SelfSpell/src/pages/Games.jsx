@@ -54,8 +54,8 @@ const Games = () => {
                     </div>
                 </div>
             </div>
-            <h2 className="text-palatinete">{game.title}</h2>
-            <p>{game.description}</p> 
+            <h2  style={{ fontSize: `${fontSize}px` }} className="text-palatinete">{game.title}</h2>
+            <p  style={{ fontSize: `${fontSize}px` }}>{game.description}</p> 
             <ButtonBasic text="Zagraj" onClick={() => navigate(game.route)} />
 
           </div>

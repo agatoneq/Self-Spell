@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/HobbyDetails.css";  // Assuming this is where custom styles are stored
 

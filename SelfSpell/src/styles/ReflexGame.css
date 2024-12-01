@@ -1,3 +1,23 @@
+.bg-reflex-bg-image {
+  background-image: url('../assets/background_reflex.png');
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+}
+
+.bg-reflex-icon {
+  background-image: url('../assets/Standing-icon.png');
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+}
+
+.bg-congrats {
+  background-image: url('../assets/congrats.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .reflex-game {
   position: relative;
   height: 100vh;

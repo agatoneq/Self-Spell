@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/MemoryGame.css";
+import ButtonBasic from "@components/ButtonBasic";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const MemoryGame = () => {
   const [cards, setCards] = useState([]);
@@ -93,7 +96,7 @@ const MemoryGame = () => {
         const newFeatures = userFeatures.map((feature, index) => {
           // Use the current index to get the corresponding feature weight
           const newFeature = feature - (moves - 10) * 0.1 * featureWeights[index];
-        
+
           // Ensure the feature stays within the range [-1, 1]
           return Math.max(Math.min(newFeature, 1), -1);
         });
@@ -107,22 +110,33 @@ const MemoryGame = () => {
     }
   }, [matchedPairs, moves]);
 
+  const navigate = useNavigate();
+
+
   return (
     <div className="memory-game">
-      <h1>Memory Game</h1>
+      <div className=" w-full flex justify-start">
+        <button
+          className="focus:outline-none"
+          onClick={() => navigate("/games")}
+        >
+          <FaArrowLeft size={24} />
+        </button>
+      </div>
+      <h1>Gra memory</h1>
       <p>Znalezione pary: {matchedPairs} / {cardImages.length}</p>
       <p>Liczba ruchów: {moves}</p>
-      <div className="game-board">
+      <div className="game-board ">
         {cards.map((card) => (
           <div
             key={card.id}
-            className={`card ${card.isFlipped ? "flipped" : ""}`}
+            className={`m-auto card ${card.isFlipped ? "flipped" : ""}`}
             onClick={() => handleCardClick(card)}
           >
             {card.isFlipped || card.isMatched ? (
               <img src={`/src/assets/${card.image}`} alt="Card" />
             ) : (
-              <div className="card-back"></div>
+              <div className="card-back bg-rebeca-pupple"></div>
             )}
           </div>
         ))}
@@ -130,7 +144,9 @@ const MemoryGame = () => {
       {matchedPairs === cardImages.length && (
         <div className="game-over">
           <h2>Gratulacje!</h2>
-          <p>Ukończyłeś grę w {moves} ruchach.</p>
+          <p className="pb-5">Ukończyłeś grę w {moves} ruchach.</p>
+          <ButtonBasic text="Zobacz rekomendowane hobby" onClick={() => navigate("/hobbyrecomendations")} />
+
         </div>
       )}
     </div>

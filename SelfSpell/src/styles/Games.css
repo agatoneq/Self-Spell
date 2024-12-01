@@ -48,11 +48,6 @@
     min-height: 100vh;
 }
 
-h2 {
-    font-size: 2rem;
-    color: var(--color-foreground);
-    margin-bottom: 100px;
-}
 
 .game-list {
     display: flex;

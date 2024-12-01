@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/PatienceGame.css";
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import ButtonBasic from "@components/ButtonBasic";
 
 const PatienceGame = () => {
   const [currentColor, setCurrentColor] = useState("red");
@@ -59,7 +62,7 @@ const PatienceGame = () => {
   const endGame = (isMaxScore = false) => {
     setIsStarted(false);
     if (isMaxScore) {
-      setMessage("Gratulacje! Zdobyłeś maksymalny wynik: 50 punktów!");
+      setMessage("Gratulacje! Zdobyłeś maksymalny wynik: 30 punktów!");
     } else {
       setMessage(`Gra zakończona. Twój wynik: ${score} punktów.`);
     }
@@ -78,31 +81,43 @@ const PatienceGame = () => {
 
     console.log("Updated user features:", updatedFeatures);
   };
-
+  const navigate = useNavigate();
 
   return (
     <div className="patience-game">
+      <div className=" w-full flex justify-start mb-4 p-4">
+        <button
+          className="focus:outline-none"
+          onClick={() => navigate("/games")}
+        >
+          <FaArrowLeft size={24} />
+        </button>
+      </div>
       {!isStarted ? (
         <div className="start-screen">
-          <h1>Gra na cierpliwość</h1>
-          <p>
-            Kliknij "Rozpocznij", aby zacząć. Czekaj na zmianę koloru tła na zielony i
+          <div className="relative flex items-center justify-center h-64">
+            <div className={` w-full h-full flex items-center justify-center bg-reflex-bg-image`}>
+              <div className={` h-full w-28 bg-pa-icon`}>
+              </div>
+            </div>
+          </div>
+          <h1 className="text-3xl font-bold mb-4">Gra na cierpliwość</h1>
+          <p className="pb-10">
+            Kliknij &quot;Rozpocznij&quot;, aby zacząć. Czekaj na zmianę koloru tła na zielony i
             klikaj przycisk, aby zdobyć punkty! Maksymalny wynik: 50 punktów.
           </p>
-          <button className="start-button" onClick={startGame}>
-            Rozpocznij
-          </button>
+          <ButtonBasic text="Rozpocznij" onClick={startGame} />
+
           {message && <p className="message">{message}</p>}
+          
         </div>
       ) : (
         <div className="game-area" style={{ backgroundColor: currentColor }}>
-          <h2 className="score">Twój wynik: {score}</h2>
-          <button className="click-button" onClick={handleClick}>
-            Kliknij mnie!
-          </button>
-          <button className="end-button" onClick={() => endGame(false)}>
-            Zakończ grę
-          </button>
+          <h2 className="score mb-10">Twój wynik: {score}</h2>
+          <ButtonBasic text="Zakończ grę" onClick={() => endGame(false)} />
+          <div className="mb-72"></div>
+          <ButtonBasic text="Kliknij mnie!" onClick={handleClick} />
+
           {message && <p className="message">{message}</p>}
         </div>
       )}

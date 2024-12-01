@@ -13,12 +13,12 @@ const Navbar = () => {
   };
 
   return (
-    <header className="p-4 relative z-50">
+    <header className="p-3 relative z-50">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           {/* Przycisk otwierający menu */}
           <button
-            className="md:hidden block focus:outline-none ml-4 mr-10"
+            className="block focus:outline-none ml-4 mr-10"
             onClick={toggleMenu}
           >
             <CiMenuFries size={22} strokeWidth={2} />

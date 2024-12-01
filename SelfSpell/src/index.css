@@ -8,7 +8,7 @@
 }
 
 [data-theme="light"] {
-    --color-background: #b49cbc;
+    --color-background: #ffffff;
     font-family: var(--font-family);
     color: "black";
     background-color: #ffffff;
