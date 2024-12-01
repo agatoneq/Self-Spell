@@ -6,45 +6,45 @@ import { useFontSize } from "@components/FontSizeProvider";
 import "../styles/Hobby.css";
 
 
-// Update hardcoded hobbies to include feature arrays
 const hardcodedHobbies = [
   {
     name: "Fotografia",
     description: "Uchwyć chwile i stwórz wspomnienia",
-    features: [0.5, 0.8, -0.2, 0.4, -0.1, 0.7, -0.3, 0.6, 0.1, -0.2],
+    features: [0.2, 0.1, 0.7, 0.8, -0.4, 0.3, 0.5, 0.6, 0, 0], // Interaction, physical skills, thinking, leisure, money, reflex, patience, memory
     className: "bg-photo",
   },
   {
     name: "Gra na ukulele",
     description: "Wyrażanie emocje i relaks przy dźwiękach ulubionych melodii.",
     className: "bg-music",
-    features: [0, 0.4, 0.3, 0, -0.5, -0.7, 0.6, 0.1, -0.2, 0.3],
+    features: [0.6, 0.2, 0.4, 0.7, -0.2, -0.1, 0.3, 0.4, 0, 0],
   },
   {
     name: "Malowanie",
     description: "Możliwość wyrażania kreatywności i odprężenia poprzez tworzenie kolorowych kompozycji.",
     className: "bg-paint",
-    features: [0.1, 0.3, -0.4, 0.7, 0.5, 0.2, -0.6, 0.4, 0.2, 0.1],
+    features: [0.1, 0.1, 0.8, 0.9, -0.3, 0.2, 0.4, 0.7, 0, 0],
   },
   {
-    name: "Wędkoawnie",
+    name: "Wędkarstwo",
     description: "Ukojenie pośród spokoju natury, satysfakcja z udanych połowów.",
-    features: [0.5, 0.8, -0.2, 0.4, -0.1, 0.7, -0.3, 0.6, 0.1, -0.2],
+    features: [0.3, 0.4, 0.3, 0.7, -0.2, 0.5, 0.8, 0.5, 0, 0],
     className: "bg-fishing",
   },
   {
     name: "Szachy",
     description: "Strategiczne myślenie, dostarczają emocji podczas każdej partii.",
     className: "bg-chess",
-    features: [0, 0.4, 0.3, 0, -0.5, -0.7, 0.6, 0.1, -0.2, 0.3],
+    features: [0.2, -0.1, 1.0, 0.6, 0.0, -0.3, 0.7, 0.9, 0, 0],
   },
   {
     name: "Szydełkowanie",
-    description: "Tworzenie unikalnych, ręcznie robionych projektów. Daje dużo satysfakcji z własnoręcznej pracy",
+    description: "Tworzenie unikalnych, ręcznie robionych projektów. Daje dużo satysfakcji z własnoręcznej pracy.",
     className: "bg-neeting",
-    features: [0.1, 0.3, -0.4, 0.7, 0.5, 0.2, -0.6, 0.4, 0.2, 0.1],
+    features: [0.1, -0.2, 0.5, 0.8, -0.1, 0.2, 0.6, 0.7, 0, 0],
   },
 ];
+
 
 const HobbyRecommendations = () => {
   const [hobbies, setHobbies] = useState([]);

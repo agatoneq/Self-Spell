@@ -10,20 +10,20 @@ const hardcodedHobbies = [
   {
     name: "Fotografia",
     description: "Uchwyć chwile i stwórz wspomnienia",
-    features: [0.5, 0.8, -0.2, 0.4, -0.1, 0.7, -0.3, 0.6, 0.1, -0.2],
+    features: [0.2, 0.1, 0.7, 0.8, -0.4, 0.3, 0.5, 0.6, 0, 0], // Interaction, physical skills, thinking, leisure, money, reflex, patience, memory
     className: "bg-photo",
   },
   {
     name: "Gra na ukulele",
     description: "Wyrażanie emocje i relaks przy dźwiękach ulubionych melodii.",
     className: "bg-music",
-    features: [0, 0.4, 0.3, 0, -0.5, -0.7, 0.6, 0.1, -0.2, 0.3],
+    features: [0.6, 0.2, 0.4, 0.7, -0.2, -0.1, 0.3, 0.4, 0, 0],
   },
   {
     name: "Malowanie",
     description: "Możliwość wyrażania kreatywności i odprężenia poprzez tworzenie kolorowych kompozycji.",
     className: "bg-paint",
-    features: [0.1, 0.3, -0.4, 0.7, 0.5, 0.2, -0.6, 0.4, 0.2, 0.1],
+    features: [0.1, 0.1, 0.8, 0.9, -0.3, 0.2, 0.4, 0.7, 0, 0],
   },
 ];
 
