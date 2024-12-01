@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ThemeContext } from '@components/ThemeProvider'; // Upewnij się, że ścieżka jest poprawna
-import { useContext } from 'react';
 import { useFontSize } from "@components/FontSizeProvider";
 import "../styles/Hobby.css";
 
@@ -111,13 +109,12 @@ const HobbyRecommendations = () => {
   };
 
   // const navigate = useNavigate();
-  const { theme } = useContext(ThemeContext); // Pobieramy aktualny motyw z kontekstu
   const { fontSize } = useFontSize(); // Pobieramy dynamiczny rozmiar czcionki
 
 
   return (
     <section className="hobby">
-      <h2>Zbiór hobby</h2>
+      <h2 className="text-3xl ">Zbiór hobby</h2>
       <div className="mt-10 hobbies-container">
         {hobbies.map((hobby, index) => (
           <Link
@@ -132,9 +129,9 @@ const HobbyRecommendations = () => {
                   </div>
                 </div>
               </div>
-              <h1 className={`${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ fontSize: `${fontSize}px` }}>{hobby.name}</h1>
-              <h1 className={`${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ fontSize: `${fontSize}px` }}>{hobby.description}</h1>
-              <p className={`${theme === 'dark' ? 'text-white' : 'text-black'}`} style={{ fontSize: `${fontSize}px` }}>              </p>
+              <h1 className="text-black" style={{ fontSize: `${fontSize}px` }}>{hobby.name}</h1>
+              <h1 className="text-black" style={{ fontSize: `${fontSize}px` }}>{hobby.description}</h1>
+              <p className="text-black" style={{ fontSize: `${fontSize}px` }}>              </p>
             </div>
           </Link>
         ))}
