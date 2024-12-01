@@ -25,7 +25,7 @@ const HomePage = () => {
             </div>
             <div className="relative flex items-center justify-center h-64">
                 <div className="bg-custom_representative-bg-image w-full h-full flex items-center justify-center">
-                    <div className="bg-custom_representative-image h-full w-20">
+                    <div className="bg-custom_representative-image h-full w-24">
                     </div>
                 </div>
             </div>
