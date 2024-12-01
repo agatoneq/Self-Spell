@@ -1,7 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
 :root {
     --color-background: #1f2023;
     --color-foreground: #efefef;
@@ -11,7 +10,7 @@
     --color-background: #d4bcdc;
     --color-foreground: #1f2023;
     color: #213547;
-    background-color: #ffffff;
+    background-color: #d4bcdc;
 }
 
 [data-theme="dark"] {
