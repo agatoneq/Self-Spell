@@ -65,25 +65,20 @@ const PatienceGame = () => {
     }
 
     // Update user features based on score
-    const userFeatures =
-      JSON.parse(localStorage.getItem("userFeatures")) || { features: Array(10).fill(1.0) };
+    const userFeatures = JSON.parse(localStorage.getItem("userFeatures")) || Array(10).fill(0.0);
 
-    const updatedFeatures = userFeatures.features.map((feature, index) => {
-      const scoreFactor = (score - 15) / 100; // Adjust score relative to 15
-      let newFeature = feature + constFeatures[index] * scoreFactor;
+    const updatedFeatures = userFeatures.map((feature, index) => {
+      let newFeature = feature + constFeatures[index]*(score-15)/100;
 
       // Keep feature within bounds
-      if (newFeature < -1.0) newFeature = -1.0;
-      if (newFeature > 1.0) newFeature = 1.0;
-
-      return newFeature;
+      return Math.max(-1.0, Math.min(1.0, newFeature));
     });
 
-    userFeatures.features = updatedFeatures;
-    localStorage.setItem("userFeatures", JSON.stringify(userFeatures));
+    localStorage.setItem("userFeatures", JSON.stringify(updatedFeatures));
 
-    console.log("Updated user features:", userFeatures.features);
+    console.log("Updated user features:", updatedFeatures);
   };
+
 
   return (
     <div className="patience-game">
