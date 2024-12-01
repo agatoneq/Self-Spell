@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-// Fallback hobbies in case the API is unreachable
 const hardcodedHobbies = [
   {
     name: "Photography",
     description: "Capture moments and create memories.",
-    image: "https://example.com/photography.jpg", // Replace with real image URL
-    distance: 2, // Default high distance to make sure it is not on top
+    image: "https://example.com/photography.jpg",
+    distance: 2,
   },
   {
-    name: "Cooking 2: Evectric Boogaloo",
+    name: "Cooking 2: Electric Boogaloo",
     description: "Create delicious meals and discover new recipes.",
-    image: "https://example.com/cooking.jpg", // Replace with real image URL
-    distance: 3, // Default high distance to make sure it is not on top
+    image: "https://example.com/cooking.jpg",
+    distance: 3,
   },
   {
     name: "Cooking",
     description: "Create delicious meals and discover new recipes.",
-    image: "https://example.com/cooking.jpg", // Replace with real image URL
-    distance: 1, // Default high distance to make sure it is not on top
+    image: "https://example.com/cooking.jpg",
+    distance: 1,
   },
 ];
 
@@ -28,7 +28,7 @@ const HobbyRecommendations = ({ userFeatures, userAge }) => {
   useEffect(() => {
     const fetchDistances = async () => {
       try {
-        /*
+                /*
         const response = await fetch("/calculate_distances", {
           method: "POST",
           headers: {
@@ -59,29 +59,16 @@ const HobbyRecommendations = ({ userFeatures, userAge }) => {
             distance: parseFloat(hobby.distance.toFixed(2)), // Ensure it's a float for proper sorting
           }));
 */
-        // Merge hardcoded hobbies with API data
         const allHobbies = [
-          ...hardcodedHobbies.map((hobby) => ({ //zamienić w apiHobbies
+          ...hardcodedHobbies.map((hobby) => ({
             ...hobby,
-            distance: parseFloat(hobby.distance), // Ensure hardcoded hobbies have numeric distances
+            distance: parseFloat(hobby.distance),
           })),
         ];
-        console.log("Works");
-        // Debug: log the combined hobbies
-        console.log("Combined Hobbies:", allHobbies);
-
-        // Sort hobbies by distance (ascending)
         const sortedHobbies = allHobbies.sort((a, b) => a.distance - b.distance);
-
-        // Debug: log the sorted hobbies
-        console.log("Sorted Hobbies:", sortedHobbies);
-
-        // Update state with sorted hobbies
         setHobbies(sortedHobbies);
       } catch (error) {
         console.error("Error fetching distances:", error);
-
-        // Fallback to hardcoded hobbies if API fails
         setHobbies(hardcodedHobbies);
       }
     };
@@ -94,14 +81,20 @@ const HobbyRecommendations = ({ userFeatures, userAge }) => {
       <h2>Hobby Recommendations</h2>
       <div className="hobbies-container">
         {hobbies.map((hobby, index) => (
+          <Link to={`/hobby/${encodeURIComponent(hobby.name)}`}>
           <div key={index} className="hobby-block">
             <img src={hobby.image} alt={hobby.name} />
-            <h3>{hobby.name}</h3>
+            <h3>
+              
+                {hobby.name}
+              
+            </h3>
             <p>{hobby.description}</p>
             <p>
               <strong>Distance:</strong> {hobby.distance}
             </p>
           </div>
+          </Link>
         ))}
       </div>
     </section>

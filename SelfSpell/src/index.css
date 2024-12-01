@@ -15,7 +15,7 @@
 
 [data-theme="dark"] {
     --color-background: #090909;
-    --color-foreground: #e4ccec;
+    --color-foreground: #fff;
     color: rgba(255, 255, 255, 0.87);
     background-color: #0f0f0f;
 }
