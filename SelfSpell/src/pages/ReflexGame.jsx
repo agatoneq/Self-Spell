@@ -9,47 +9,45 @@ const ReflexGame = () => {
   const [shape, setShape] = useState(null); // Aktualny kształt
   const [position, setPosition] = useState({ top: "50%", left: "50%" }); // Pozycja elementu
 
-<<<<<<< Updated upstream
-  const shapes = ["square", "circle", "triangle"]; // Dostępne kształty
-=======
   const images = [cat1, cat2, cat3];
->>>>>>> Stashed changes
 
   const startGame = () => {
-    console.log("Game started");
-    setStage(1); // Ustaw etap na początek
-    setReactionTimes([]); // Reset wyników
-    nextRound(1); // Rozpocznij pierwszą próbę
+    console.log("Gra rozpoczęta");
+    setIsStarted(true);
+    setStage(1);
+    setReactionTimes([]);
+    setGameEnded(false);
+    setAverageTime(null);
+    setInstructionText("Czekaj na czarodzieja...");
+    nextRound(1);
   };
 
   const nextRound = (currentStage) => {
-<<<<<<< Updated upstream
-    if (currentStage > 3) return; // Zakończenie gry po trzeciej próbie
-=======
     if (currentStage > 6) {
       return;
     }
->>>>>>> Stashed changes
 
-    setIsVisible(false); // Ukryj kształt przed pokazaniem nowego
-    const randomDelay = Math.floor(Math.random() * 4000) + 1000; // Losowe opóźnienie 1-5 sekund
+    setIsVisible(false);
+    const randomDelay = Math.floor(Math.random() * 2000) + 1000;
 
     console.log(`Stage: ${currentStage}`);
     console.log(`Next shape will appear in ${randomDelay}ms`);
 
     setTimeout(() => {
       const randomPosition = {
-        top: `${Math.random() * 70 + 15}%`, // W zakresie 15-85% ekranu
-        left: `${Math.random() * 70 + 15}%`,
+        top: `${Math.random() * 50 + 15}%`, 
+        left: `${Math.random() * 50 + 15}%`,
       };
       setPosition(randomPosition);
-      setShape(shapes[currentStage - 1]); // Ustaw właściwy kształt na podstawie etapu
+      const selectedImage = images[currentStage % 3];
+      setImage(selectedImage);
       setStartTime(Date.now());
       setIsVisible(true);
 
       console.log(`Shape: ${shapes[currentStage - 1]} at position`, randomPosition);
     }, randomDelay);
-  };
+};
+
 
   const handleClick = () => {
     if (isVisible) {
@@ -58,24 +56,20 @@ const ReflexGame = () => {
 
       console.log(`Reaction time: ${reactionTime}ms`);
 
-      setReactionTimes((prev) => [...prev, reactionTime]); // Dodaj wynik do listy
+      setReactionTimes((prev) => [...prev, reactionTime]);
       setIsVisible(false);
 
-<<<<<<< Updated upstream
-      if (stage < 3) {
-=======
       if (stage < 6) {
->>>>>>> Stashed changes
         const nextStage = stage + 1;
-        setStage(nextStage); // Przejdź do kolejnego etapu
-        nextRound(nextStage); // Rozpocznij nową próbę
+        setStage(nextStage); 
+        nextRound(nextStage);
       } else {
         const averageTime =
           [...reactionTimes, reactionTime].reduce((a, b) => a + b, 0) /
           (reactionTimes.length + 1);
 
         alert(`Gra zakończona! Średni czas reakcji: ${Math.round(averageTime)} ms`);
-        setStage(1); // Reset gry do pierwszego etapu
+        setStage(1);
       }
     }
   };
