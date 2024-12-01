@@ -43,7 +43,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/hobbyrecomendations" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
-                Hobby Recommendations
+                Polecane hobby
               </Link>
             </li>
           </ul>

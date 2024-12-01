@@ -78,7 +78,7 @@ const HobbyRecommendations = ({ userFeatures, userAge }) => {
 
   return (
     <section className="hobby-recommendations">
-      <h2>Hobby Recommendations</h2>
+      <h2>Polecane hobby:</h2>
       <div className="hobbies-container">
         {hobbies.map((hobby, index) => (
           <Link to={`/hobby/${encodeURIComponent(hobby.name)}`}>
