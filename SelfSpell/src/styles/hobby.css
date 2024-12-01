@@ -20,6 +20,29 @@
       background-color: transparent;
       /* Zapewnia przezroczystość */
   }
+  .bg-fishing {
+    background-image: url('../assets/pexels-lum3n-44775-294674.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent; /* Zapewnia przezroczystość */
+  }
+  
+  .bg-chess {
+      background-image: url('../assets/pexels-pixabay-260024.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: transparent;
+      /* Zapewnia przezroczystość */
+  }
+
+  .bg-neeting {
+      background-image: url('../assets/pexels-surene-palvie-1075224-2062061.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: transparent;
+      /* Zapewnia przezroczystość */
+  }
+
 
 
 .hobby-recommendations {

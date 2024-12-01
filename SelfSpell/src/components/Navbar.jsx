@@ -62,6 +62,11 @@ const Navbar = () => {
                 Polecane hobby
               </Link>
             </li>
+            <li>
+              <Link to="/hobby" className="hover:underline text-white" onClick={() => setIsMenuOpen(false)}>
+                Zbiór hobby
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

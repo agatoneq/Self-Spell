@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '@components/ThemeProvider'; // Upewnij się, że ścieżka jest poprawna
 import { useContext } from 'react';
 import { useFontSize } from "@components/FontSizeProvider";
+import "../styles/Hobby.css";
 
 
 // Update hardcoded hobbies to include feature arrays
@@ -24,6 +24,24 @@ const hardcodedHobbies = [
     name: "Malowanie",
     description: "Możliwość wyrażania kreatywności i odprężenia poprzez tworzenie kolorowych kompozycji.",
     className: "bg-paint",
+    features: [0.1, 0.3, -0.4, 0.7, 0.5, 0.2, -0.6, 0.4, 0.2, 0.1],
+  },
+  {
+    name: "Wędkoawnie",
+    description: "Ukojenie pośród spokoju natury, satysfakcja z udanych połowów.",
+    features: [0.5, 0.8, -0.2, 0.4, -0.1, 0.7, -0.3, 0.6, 0.1, -0.2],
+    className: "bg-fishing",
+  },
+  {
+    name: "Szachy",
+    description: "Strategiczne myślenie, dostarczają emocji podczas każdej partii.",
+    className: "bg-chess",
+    features: [0, 0.4, 0.3, 0, -0.5, -0.7, 0.6, 0.1, -0.2, 0.3],
+  },
+  {
+    name: "Szydełkowanie",
+    description: "Tworzenie unikalnych, ręcznie robionych projektów. Daje dużo satysfakcji z własnoręcznej pracy",
+    className: "bg-neeting",
     features: [0.1, 0.3, -0.4, 0.7, 0.5, 0.2, -0.6, 0.4, 0.2, 0.1],
   },
 ];
@@ -98,9 +116,8 @@ const HobbyRecommendations = () => {
 
 
   return (
-    <section className="hobby-recommendations">
-      <h2>Polecane hobby </h2>
-      <h2>przez algorytm:</h2>
+    <section className="hobby">
+      <h2>Zbiór hobby</h2>
       <div className="mt-10 hobbies-container">
         {hobbies.map((hobby, index) => (
           <Link

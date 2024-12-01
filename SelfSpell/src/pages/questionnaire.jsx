@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Questionnaire = () => {
@@ -25,7 +25,7 @@ const Questionnaire = () => {
     console.log("User features:", userFeatures);
   
     // Define constant feature weights (similar to constFeatures in the bottom code)
-    const constFeatures = [-1.2, 1.5, -1.1, 1.3, 1.0, 1.6, -1.7, 1.8, 2.0, 1.4];
+    // const constFeatures = [-1.2, 1.5, -1.1, 1.3, 1.0, 1.6, -1.7, 1.8, 2.0, 1.4];
   
     // Calculate new features based on the user's answers and update the first 5 features
     const newFeatures = userFeatures.map((feature, index) => {

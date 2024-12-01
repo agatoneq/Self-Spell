@@ -15,6 +15,8 @@ import Games from './pages/Games'
 import PatienceGame from './pages/PatienceGame'
 import MemoryGame from './pages/MemoryGame'
 import Questionnaire from './pages/questionnaire';
+import Hobby from './pages/Hobby';
+
 function App() {
 
   return (
@@ -30,6 +32,7 @@ function App() {
             <Route exact path="/patiencegame" element={<PatienceGame />} />
             <Route exact path="/memorygame" element={<MemoryGame />} />
             <Route exact path="/questionnaire" element={<Questionnaire />} />
+            <Route exact path="/hobby" element={<Hobby />} />
               <Route path="/" element={<HomePage />} />
             </Routes>
           </Layout>
