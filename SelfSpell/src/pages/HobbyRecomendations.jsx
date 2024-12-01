@@ -10,10 +10,10 @@ const hardcodedHobbies = [
     features: [-0.6, -0.3, 0.4, 0.7, 0.4, 0.1, -0.1, 0.1, 0.1, -0.2],
   },
   {
-    name: "Cooking 2: Electric Boogaloo",
-    description: "Create delicious meals and discover new recipes.",
+    name: "Ground tennis",
+    description: "Play tennis with friends and family.",
     image: "https://example.com/cooking2.jpg",
-    features: [0, 0.4, 0.3, 0, -0.5, -0.7, 0.6, 0.1, -0.2, 0.3],
+    features: [0.9, 0.8, 0.4, 0.4, 0.3, -0.1, 0.1, 0.1, -0.2, 0.3],
   },
   {
     name: "Cooking",
