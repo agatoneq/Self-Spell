@@ -108,6 +108,10 @@ const HobbyRecommendations = () => {
     }
   };
 
+  useEffect(() => {
+    fetchGPTResponse();
+  }, [userFeatures]);
+
   // const navigate = useNavigate();
   const { theme } = useContext(ThemeContext); // Pobieramy aktualny motyw z kontekstu
   const { fontSize } = useFontSize(); // Pobieramy dynamiczny rozmiar czcionki
@@ -116,7 +120,9 @@ const HobbyRecommendations = () => {
   return (
     <section className="hobby-recommendations">
       <h2>Polecane hobby </h2>
-      <h2>przez algorytm:</h2>
+      <div className="chatgpt-response">
+          {loading ? "" : response}
+      </div>
       <div className="mt-10 hobbies-container">
         {hobbies.map((hobby, index) => (
           <Link
