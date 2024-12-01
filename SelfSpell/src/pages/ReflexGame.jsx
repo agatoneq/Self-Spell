@@ -18,14 +18,9 @@ const ReflexGame = () => {
   const [instructionText, setInstructionText] = useState("Czekaj na kształt...");
 
   const images = [cat1, cat2, cat3]; // Tablica z obrazkami
-
-  // Const array with feature values for each stage
-  const constFeatures = [
-    -1.2, 1.5, -1.1, 1.3, 1.0, 1.6, -1.7, 1.8, 2.0, 1.4
-  ]; // Example values, adjust them according to your needs
+  const constFeatures = [-0.2, 0.15, -0.1, 0.13, 0.1, 0.16, -0.17, 0.18, 0.2, 0.14]; // Adjusted example values
 
   const startGame = () => {
-    console.log("Game started");
     setIsStarted(true);
     setStage(1);
     setReactionTimes([]);
@@ -41,21 +36,16 @@ const ReflexGame = () => {
     setIsVisible(false);
     const randomDelay = Math.floor(Math.random() * 4000) + 1000;
 
-    console.log(`Stage: ${currentStage}`);
-    console.log(`Next image will appear in ${randomDelay}ms`);
-
     setTimeout(() => {
       const randomPosition = {
         top: `${Math.random() * 70 + 15}%`,
         left: `${Math.random() * 70 + 15}%`,
       };
       setPosition(randomPosition);
-      setImage(images[currentStage % 3]);
+      setImage(images[currentStage % images.length]);
       setStartTime(Date.now());
       setIsVisible(true);
       setInstructionText("");
-
-      console.log(`Image: ${images[currentStage % 3]} at position`, randomPosition);
     }, randomDelay);
   };
 
@@ -63,8 +53,6 @@ const ReflexGame = () => {
     if (isVisible) {
       const endTime = Date.now();
       const reactionTime = endTime - startTime;
-
-      console.log(`Reaction time: ${reactionTime}ms`);
 
       setReactionTimes((prev) => [...prev, reactionTime]);
       setIsVisible(false);
@@ -74,36 +62,34 @@ const ReflexGame = () => {
         setStage(nextStage);
         nextRound(nextStage);
       } else {
-        const finalAverageTime =
-          [...reactionTimes, reactionTime].reduce((a, b) => a + b, 0) /
-          (reactionTimes.length + 1);
-
-        setAverageTime(finalAverageTime);
-        setGameEnded(true);
-        setIsStarted(false);
-
-        // Get user features from localStorage and update based on average time
-        const userFeatures = JSON.parse(localStorage.getItem("userFeatures")) || { features: Array(10).fill(1.0) };
-
-        // Update the user features based on the average reaction time
-        const updatedFeatures = userFeatures.features.map((feature, index) => {
-          const avgTimeFactor = (finalAverageTime / 1000 - 1) / 20; // Convert ms to seconds
-          let newFeature = feature - constFeatures[index] * avgTimeFactor
-          if (newFeature < -1.) {
-            newFeature = -1.;}
-          if (newFeature > 1.) {
-            newFeature = 1.;
-          }
-          return newFeature;
-        });
-
-        // Save the updated features back to localStorage
-        userFeatures.features = updatedFeatures;
-        localStorage.setItem("userFeatures", JSON.stringify(userFeatures));
-
-        console.log("Updated user features:", userFeatures.features);
+        endGame([...reactionTimes, reactionTime]);
       }
     }
+  };
+
+  const endGame = (finalReactionTimes) => {
+    const finalAverageTime =
+      finalReactionTimes.reduce((a, b) => a + b, 0) / finalReactionTimes.length;
+
+    setAverageTime(finalAverageTime);
+    setGameEnded(true);
+    setIsStarted(false);
+
+    // Update user features based on average reaction time
+    const userFeatures =
+      JSON.parse(localStorage.getItem("userFeatures")) || Array(10).fill(0.0);
+
+    const updatedFeatures = userFeatures.map((feature, index) => {
+      const avgTimeFactor = (finalAverageTime / 1000 - 0.3) / 10; // Normalize for a baseline time of 300ms
+      let newFeature = feature - constFeatures[index] * avgTimeFactor;
+
+      // Keep feature within bounds
+      return Math.max(-1.0, Math.min(1.0, newFeature));
+    });
+
+    localStorage.setItem("userFeatures", JSON.stringify(updatedFeatures));
+
+    console.log("Updated user features:", updatedFeatures);
   };
 
   return (
@@ -138,7 +124,7 @@ const ReflexGame = () => {
       {gameEnded && (
         <div className="results">
           <h2>Gra zakończona!</h2>
-          <p>Twój średni czas reakcji to: {Math.round(averageTime) / 1000} s</p>
+          <p>Twój średni czas reakcji to: {(averageTime / 1000).toFixed(3)} s</p>
         </div>
       )}
     </div>

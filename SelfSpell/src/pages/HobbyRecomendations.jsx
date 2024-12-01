@@ -1,99 +1,92 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// Update hardcoded hobbies to include feature arrays
 const hardcodedHobbies = [
   {
     name: "Photography",
     description: "Capture moments and create memories.",
     image: "https://example.com/photography.jpg",
-    distance: 2,
+    features: [0.5, 0.8, -0.2, 0.4, -0.1, 0.7, -0.3, 0.6, 0.1, -0.2],
   },
   {
     name: "Cooking 2: Electric Boogaloo",
     description: "Create delicious meals and discover new recipes.",
-    image: "https://example.com/cooking.jpg",
-    distance: 3,
+    image: "https://example.com/cooking2.jpg",
+    features: [0, 0.4, 0.3, 0, -0.5, -0.7, 0.6, 0.1, -0.2, 0.3],
   },
   {
     name: "Cooking",
     description: "Create delicious meals and discover new recipes.",
     image: "https://example.com/cooking.jpg",
-    distance: 1,
+    features: [0.1, 0.3, -0.4, 0.7, 0.5, 0.2, -0.6, 0.4, 0.2, 0.1],
   },
 ];
 
-const HobbyRecommendations = ({ userFeatures, userAge }) => {
+const HobbyRecommendations = () => {
   const [hobbies, setHobbies] = useState([]);
 
   useEffect(() => {
-    const fetchDistances = async () => {
+    const calculateDistances = () => {
       try {
-                /*
-        const response = await fetch("/calculate_distances", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            features: userFeatures,
-            age: userAge,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to calculate distances from the API");
+        // Get user features from localStorage
+        const userFeatures = JSON.parse(localStorage.getItem("userFeatures"));
+        if (!userFeatures || userFeatures.length !== 10) {
+          throw new Error("Invalid user features in localStorage");
         }
 
-        const data = await response.json();
+        // Function to calculate Euclidean distance
+        const calculateDistance = (hobbyFeatures, userFeatures) => {
+          return Math.sqrt(
+            hobbyFeatures.reduce(
+              (sum, feature, index) => sum + Math.pow(feature - userFeatures[index], 2),
+              0
+            )
+          );
+        };
 
-        // Debug: log the API data to check distances
-        console.log("API Hobby Data:", data);
+        // Map hardcoded hobbies with calculated distances
+        const hobbiesWithDistances = hardcodedHobbies.map((hobby) => ({
+          ...hobby,
+          distance: parseFloat(
+            calculateDistance(hobby.features, userFeatures).toFixed(2)
+          ),
+        }));
 
-        // Map API data and ensure the distance is correctly formatted as a number
-        const apiHobbies = data
-          .filter((hobby) => typeof hobby.distance === "number") // Exclude invalid distances
-          .map((hobby) => ({
-            name: hobby.hobby,
-            description: hobby.hobby,
-            image: hobby.url || "https://example.com/placeholder.jpg", // Fallback image
-            distance: parseFloat(hobby.distance.toFixed(2)), // Ensure it's a float for proper sorting
-          }));
-*/
-        const allHobbies = [
-          ...hardcodedHobbies.map((hobby) => ({
-            ...hobby,
-            distance: parseFloat(hobby.distance),
-          })),
-        ];
-        const sortedHobbies = allHobbies.sort((a, b) => a.distance - b.distance);
+        // Sort hobbies by distance (ascending)
+        const sortedHobbies = hobbiesWithDistances.sort(
+          (a, b) => a.distance - b.distance
+        );
+
         setHobbies(sortedHobbies);
       } catch (error) {
-        console.error("Error fetching distances:", error);
-        setHobbies(hardcodedHobbies);
+        console.error("Error calculating distances:", error);
+        setHobbies(
+          hardcodedHobbies.map((hobby) => ({
+            ...hobby,
+            distance: Infinity, // Default large distance for fallback
+          }))
+        );
       }
     };
 
-    fetchDistances();
-  }, [userFeatures, userAge]);
+    calculateDistances();
+  }, []); // Empty dependency array as it only depends on localStorage
 
   return (
     <section className="hobby-recommendations">
       <h2>Polecane hobby:</h2>
       <div className="hobbies-container">
         {hobbies.map((hobby, index) => (
-          <Link to={`/hobby/${encodeURIComponent(hobby.name)}`}>
-          <div key={index} className="hobby-block">
-            <img src={hobby.image} alt={hobby.name} />
-            <h3>
-              
-                {hobby.name}
-              
-            </h3>
-            <p>{hobby.description}</p>
-            <p>
-              <strong>Distance:</strong> {hobby.distance}
-            </p>
-          </div>
+          <Link to={`/hobby/${encodeURIComponent(hobby.name)}`} key={index}>
+            <div className="hobby-block">
+              <img src={hobby.image} alt={hobby.name} />
+              <h3>{hobby.name}</h3>
+              <p>{hobby.description}</p>
+              <p>
+                <strong>Distance:</strong> {hobby.distance}
+              </p>
+            </div>
           </Link>
         ))}
       </div>
