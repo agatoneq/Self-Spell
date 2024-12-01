@@ -17,7 +17,7 @@ const hardcodedHobbies = [
     name: "Gra na ukulele",
     description: "Wyrażanie emocje i relaks przy dźwiękach ulubionych melodii.",
     className: "bg-music",
-    features: [0.6, 0.2, 0.4, 0.7, -0.2, -0.1, 0.3, 0.4, 0, 0],
+    features: [0.3, 0.2, 0.4, 0.7, -0.2, -0.1, 0.3, 0.4, 0, 0],
   },
   {
     name: "Malowanie",
