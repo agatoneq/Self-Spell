@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -7,7 +7,7 @@ const hardcodedHobbies = [
   {
     name: "Photography",
     description: "Capture moments and create memories.",
-    image: "https://example.com/photography.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Photographer_Photographing_Nevada_Mountains.jpg/1200px-Photographer_Photographing_Nevada_Mountains.jpg",
     features: [0.5, 0.8, -0.2, 0.4, -0.1, 0.7, -0.3, 0.6, 0.1, -0.2],
   },
   {
@@ -19,7 +19,7 @@ const hardcodedHobbies = [
   {
     name: "Cooking",
     description: "Create delicious meals and discover new recipes.",
-    image: "https://example.com/cooking.jpg",
+    image: "https://images-ext-1.discordapp.net/external/NHyE6yjXdRBCzbf-8zZsPgydszArA7ONsbe_1hqGQgs/https/t3.ftcdn.net/jpg/10/67/97/94/240_F_1067979407_j0ZfbsMls06OJLMLbsSZ6Hft94fln7Zj.jpg?format=webp&width=413&height=271",
     features: [0.1, 0.3, -0.4, 0.7, 0.5, 0.2, -0.6, 0.4, 0.2, 0.1],
   },
 ];

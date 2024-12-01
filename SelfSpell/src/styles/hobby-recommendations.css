@@ -1,6 +1,4 @@
 
-/* Hobby Recommendations Styles */
-
 .hobby-recommendations {
     padding: 20px 20px 20px;
     text-align: center;
@@ -11,7 +9,6 @@
     color: var(--color-foreground);
     margin-bottom: 100px;
     /* Use color from root for consistency */
-
 }
 
 .hobbies-container {
@@ -23,30 +20,30 @@
 
 .hobby-block {
     background-color: var(--color-foreground);
-
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobby-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .hobby-block img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
 .hobby-block h3 {
     font-size: 1.2rem;
     color: var(--color-background);
-
 }
 
 .hobby-block p {
     color: var(--color-background);
-
 }
 
 
