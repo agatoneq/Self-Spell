@@ -8,45 +8,16 @@
 
 [data-theme="light"] {
     --color-background: #d4bcdc;
-    --color-foreground: #1f2023;
+    --color-foreground: #67135e;
     color: #213547;
     background-color: #d4bcdc;
 }
 
 [data-theme="dark"] {
-    --color-background: #1f2023;
-    --color-foreground: #efefef;
+    --color-background: #090909;
+    --color-foreground: #e4ccec;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-}
-
-body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-}
-
-:root {
-    --color-background: #1f2023;
-    --color-foreground: #efefef;
-}
-
-[data-theme="light"] {
-    --color-background: #fafafa;
-    --color-foreground: #1f2023;
-    color: #213547;
-    background-color: #ffffff;
-}
-
-[data-theme="dark"] {
-    --color-background: #1f2023;
-    --color-foreground: #efefef;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    background-color: #0f0f0f;
 }
 
 body {

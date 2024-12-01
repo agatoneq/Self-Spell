@@ -1,7 +1,6 @@
-import { useState} from "react";
+import { useState } from "react";
 import "../styles/ReflexGame.css";
 
-// Importowanie obrazów
 import cat1 from "../assets/cat1.png";
 import cat2 from "../assets/cat2.png";
 import cat3 from "../assets/cat3.png";
@@ -19,6 +18,11 @@ const ReflexGame = () => {
   const [instructionText, setInstructionText] = useState("Czekaj na kształt...");
 
   const images = [cat1, cat2, cat3]; // Tablica z obrazkami
+
+  // Const array with feature values for each stage
+  const constFeatures = [
+    -1.2, 1.5, -1.1, 1.3, 1.0, 1.6, -1.7, 1.8, 2.0, 1.4
+  ]; // Example values, adjust them according to your needs
 
   const startGame = () => {
     console.log("Game started");
@@ -79,6 +83,27 @@ const ReflexGame = () => {
         setAverageTime(finalAverageTime);
         setGameEnded(true);
         setIsStarted(false);
+
+        // Get user features from localStorage and update based on average time
+        const userFeatures = JSON.parse(localStorage.getItem("userFeatures")) || { features: Array(10).fill(1.0) };
+
+        // Update the user features based on the average reaction time
+        const updatedFeatures = userFeatures.features.map((feature, index) => {
+          const avgTimeFactor = (finalAverageTime / 1000 - 1) / 20; // Convert ms to seconds
+          let newFeature = feature - constFeatures[index] * avgTimeFactor
+          if (newFeature < -1.) {
+            newFeature = -1.;}
+          if (newFeature > 1.) {
+            newFeature = 1.;
+          }
+          return newFeature;
+        });
+
+        // Save the updated features back to localStorage
+        userFeatures.features = updatedFeatures;
+        localStorage.setItem("userFeatures", JSON.stringify(userFeatures));
+
+        console.log("Updated user features:", userFeatures.features);
       }
     }
   };

@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import ReflexGame from "./pages/ReflexGame";
 import HobbyRecommendations from './pages/HobbyRecomendations'
+import Games from './pages/Games'
 
 function App() {
 
@@ -16,8 +17,9 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route exact path="/reflexgame" element={<ReflexGame />} />
+            <Route exact path="/games" element={<Games />} />
             <Route exact path="/hobbyrecomendations" element={<HobbyRecommendations />} />
+            <Route exact path="/reflexgame" element={<ReflexGame />} />
           </Routes>
         </Layout>
       </Router>

@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <header className="p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">Moja Aplikacja</h1>
+        <h1 className="text-xl font-bold">SelfSpell</h1>
         <div className="flex items-center space-x-4">
           {/* Przycisk zmiany motywu */}
           <ThemeSwitcher />
@@ -37,8 +37,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/reflexgame" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
-                Reflex Game
+              <Link to="/games" className="hover:underline" onClick={() => setIsMenuOpen(false)}>
+                Gry
               </Link>
             </li>
             <li>
