@@ -37,7 +37,7 @@ co twój świat na lepsze zmienia.</h1>
             <div className="relative items-center column-1 justify-center h-56 bg-custom-image py-2 my-5">
                 <div className="text-center mx-auto text-black">
                     <h1 className="text-4xl font-bold mb-4">
-                        Dołącz do ponad 1 miliona użytkowników na całym świecie
+                        Dołącz do ponad 600 tysięcy użytkowników na całym świecie
                     </h1>
                 </div>
                 <div className="text-center text-black">
