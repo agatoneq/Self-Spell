@@ -25,7 +25,7 @@ const ReflexGame = () => {
   ]; // Example values, adjust them according to your needs
 
   const startGame = () => {
-    console.log("Game started");
+    console.log("Gra rozpoczęta");
     setIsStarted(true);
     setStage(1);
     setReactionTimes([]);
@@ -36,13 +36,13 @@ const ReflexGame = () => {
   };
 
   const nextRound = (currentStage) => {
-    if (currentStage > 3) return; // Zakończenie gry po trzeciej próbie
+    if (currentStage > 6) return;
 
     setIsVisible(false);
     const randomDelay = Math.floor(Math.random() * 4000) + 1000;
 
-    console.log(`Stage: ${currentStage}`);
-    console.log(`Next image will appear in ${randomDelay}ms`);
+    console.log(`Etap: ${currentStage}`);
+    console.log(`Następny obrazek pojawi się za ${randomDelay}ms`);
 
     setTimeout(() => {
       const randomPosition = {
@@ -50,12 +50,13 @@ const ReflexGame = () => {
         left: `${Math.random() * 70 + 15}%`,
       };
       setPosition(randomPosition);
-      setImage(images[currentStage % 3]);
+      const selectedImage = images[currentStage % 3]; // Zmienna do wybrania obrazka
+      setImage(selectedImage); // Ustawiamy obrazek
       setStartTime(Date.now());
       setIsVisible(true);
       setInstructionText("");
 
-      console.log(`Image: ${images[currentStage % 3]} at position`, randomPosition);
+      console.log(`Obrazek: ${selectedImage} w pozycji`, randomPosition);
     }, randomDelay);
   };
 
@@ -64,12 +65,12 @@ const ReflexGame = () => {
       const endTime = Date.now();
       const reactionTime = endTime - startTime;
 
-      console.log(`Reaction time: ${reactionTime}ms`);
+      console.log(`Czas reakcji: ${reactionTime}ms`);
 
       setReactionTimes((prev) => [...prev, reactionTime]);
       setIsVisible(false);
 
-      if (stage < 3) {
+      if (stage < 6) {
         const nextStage = stage + 1;
         setStage(nextStage);
         nextRound(nextStage);
@@ -101,7 +102,7 @@ const ReflexGame = () => {
         userFeatures.features = updatedFeatures;
         localStorage.setItem("userFeatures", JSON.stringify(userFeatures));
 
-        console.log("Updated user features:", userFeatures.features);
+        console.log("Zaktualizowane cechy użytkownika:", userFeatures.features);
       }
     }
   };
@@ -123,13 +124,13 @@ const ReflexGame = () => {
       {isStarted && !gameEnded ? (
         <>
           <p className="info">{instructionText}</p>
-          {isVisible && (
+          {isVisible && image && (
             <div
               className="shape-container"
               style={{ top: position.top, left: position.left }}
               onClick={handleClick}
             >
-              <img src={image} alt="shape" className="shape" />
+              <img src={image} alt="kot" className="shape" />
             </div>
           )}
         </>
