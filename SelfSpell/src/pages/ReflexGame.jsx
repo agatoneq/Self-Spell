@@ -17,12 +17,20 @@ const ReflexGame = () => {
   const [averageTime, setAverageTime] = useState(null);
   const [instructionText, setInstructionText] = useState("Czekaj na kształt...");
 
+<<<<<<< HEAD
   const images = [cat1, cat2, cat3]; // Tablica z obrazkami
 
   // Const array with feature values for each stage
   const constFeatures = [
     -1.2, 1.5, -1.1, 1.3, 1.0, 1.6, -1.7, 1.8, 2.0, 1.4
   ]; // Example values, adjust them according to your needs
+=======
+<<<<<<< Updated upstream
+  const shapes = ["square", "circle", "triangle"]; // Dostępne kształty
+=======
+  const images = [cat1, cat2, cat3];
+>>>>>>> Stashed changes
+>>>>>>> agatoneq
 
   const startGame = () => {
     console.log("Game started");
@@ -36,9 +44,19 @@ const ReflexGame = () => {
   };
 
   const nextRound = (currentStage) => {
+<<<<<<< HEAD
     if (currentStage > 9) {
       return;
     }
+=======
+<<<<<<< Updated upstream
+    if (currentStage > 3) return; // Zakończenie gry po trzeciej próbie
+=======
+    if (currentStage > 6) {
+      return;
+    }
+>>>>>>> Stashed changes
+>>>>>>> agatoneq
 
     setIsVisible(false);
     const randomDelay = Math.floor(Math.random() * 4000) + 1000;
@@ -71,7 +89,15 @@ const ReflexGame = () => {
       setReactionTimes((prev) => [...prev, reactionTime]);
       setIsVisible(false);
 
+<<<<<<< HEAD
       if (stage < 9) {
+=======
+<<<<<<< Updated upstream
+      if (stage < 3) {
+=======
+      if (stage < 6) {
+>>>>>>> Stashed changes
+>>>>>>> agatoneq
         const nextStage = stage + 1;
         setStage(nextStage);
         nextRound(nextStage);

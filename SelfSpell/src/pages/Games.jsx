@@ -10,19 +10,19 @@ const Games = () => {
       id: "reflex",
       title: "Test na Refleks",
       description: "Sprawdź, jak szybko potrafisz reagować na zmieniające się kształty.",
-      route: "/reflex",
+      route: "/reflexgame",
     },
     {
       id: "patience",
       title: "Test na Cierpliwość",
       description: "Przekonaj się, jak dobrze radzisz sobie z zadaniami wymagającymi skupienia.",
-      route: "/patience",
+      route: "/patiencegame",
     },
     {
       id: "memory",
       title: "Test na Pamięć",
       description: "Sprawdź, jak dobrze zapamiętujesz różne wzory i sekwencje.",
-      route: "/memory",
+      route: "/memorygame",
     },
   ];
 
