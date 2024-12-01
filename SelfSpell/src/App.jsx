@@ -10,6 +10,12 @@ import {
 } from "react-router-dom";
 import ReflexGame from "./pages/ReflexGame";
 import HobbyRecommendations from './pages/HobbyRecomendations'
+<<<<<<< Updated upstream
+=======
+import Games from './pages/Games'
+import PatienceGame from './pages/PatienceGame'
+import MemoryGame from './pages/MemoryGame'
+>>>>>>> Stashed changes
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +23,7 @@ function App() {
   return (
     <>
       <Router>
+<<<<<<< Updated upstream
             <Routes>
                 <Route exact path="/reflexgame" element={<ReflexGame />} />
                 <Route exact path="/hobbyrecomendations" element={<HobbyRecommendations />} />
@@ -25,5 +32,20 @@ function App() {
     </>
   )
 }
+=======
+        <Layout>
+          <Routes>
+            <Route exact path="/games" element={<Games />} />
+            <Route exact path="/hobbyrecomendations" element={<HobbyRecommendations />} />
+            <Route exact path="/reflexgame" element={<ReflexGame />} />
+            <Route exact path="/patiencegame" element={<PatienceGame />} />
+            <Route exact path="/memorygame" element={<MemoryGame />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </ThemeProvider>
+  );
+};
+>>>>>>> Stashed changes
 
 export default App

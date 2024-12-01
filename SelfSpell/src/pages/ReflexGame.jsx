@@ -9,7 +9,11 @@ const ReflexGame = () => {
   const [shape, setShape] = useState(null); // Aktualny kształt
   const [position, setPosition] = useState({ top: "50%", left: "50%" }); // Pozycja elementu
 
+<<<<<<< Updated upstream
   const shapes = ["square", "circle", "triangle"]; // Dostępne kształty
+=======
+  const images = [cat1, cat2, cat3];
+>>>>>>> Stashed changes
 
   const startGame = () => {
     console.log("Game started");
@@ -19,7 +23,13 @@ const ReflexGame = () => {
   };
 
   const nextRound = (currentStage) => {
+<<<<<<< Updated upstream
     if (currentStage > 3) return; // Zakończenie gry po trzeciej próbie
+=======
+    if (currentStage > 6) {
+      return;
+    }
+>>>>>>> Stashed changes
 
     setIsVisible(false); // Ukryj kształt przed pokazaniem nowego
     const randomDelay = Math.floor(Math.random() * 4000) + 1000; // Losowe opóźnienie 1-5 sekund
@@ -51,7 +61,11 @@ const ReflexGame = () => {
       setReactionTimes((prev) => [...prev, reactionTime]); // Dodaj wynik do listy
       setIsVisible(false);
 
+<<<<<<< Updated upstream
       if (stage < 3) {
+=======
+      if (stage < 6) {
+>>>>>>> Stashed changes
         const nextStage = stage + 1;
         setStage(nextStage); // Przejdź do kolejnego etapu
         nextRound(nextStage); // Rozpocznij nową próbę
