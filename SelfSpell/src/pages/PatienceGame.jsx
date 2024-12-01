@@ -6,13 +6,14 @@ const PatienceGame = () => {
   const [score, setScore] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
   const [message, setMessage] = useState("");
+  const constFeatures = [-1.2, 1.5, -1.1, 1.3, 1.0, 1.6, -1.7, 1.8, 2.0, 1.4]; // Feature weights
 
   useEffect(() => {
     let colorInterval;
 
     if (isStarted) {
-        const redDuration = Math.min(5000, 1000 + score * 50);
-        const greenDuration = 1000; 
+      const redDuration = Math.min(5000, 1000 + score * 50);
+      const greenDuration = 1000;
 
       colorInterval = setInterval(() => {
         const randomColor = Math.random() < 0.5 ? "red" : "green";
@@ -25,7 +26,6 @@ const PatienceGame = () => {
           }, greenDuration);
         }
       }, redDuration);
-
     }
 
     return () => clearInterval(colorInterval);
@@ -63,7 +63,26 @@ const PatienceGame = () => {
     } else {
       setMessage(`Gra zakończona. Twój wynik: ${score} punktów.`);
     }
-    console.log("Gra zakończona. Twój wynik:", score);
+
+    // Update user features based on score
+    const userFeatures =
+      JSON.parse(localStorage.getItem("userFeatures")) || { features: Array(10).fill(1.0) };
+
+    const updatedFeatures = userFeatures.features.map((feature, index) => {
+      const scoreFactor = (score - 15) / 100; // Adjust score relative to 15
+      let newFeature = feature + constFeatures[index] * scoreFactor;
+
+      // Keep feature within bounds
+      if (newFeature < -1.0) newFeature = -1.0;
+      if (newFeature > 1.0) newFeature = 1.0;
+
+      return newFeature;
+    });
+
+    userFeatures.features = updatedFeatures;
+    localStorage.setItem("userFeatures", JSON.stringify(userFeatures));
+
+    console.log("Updated user features:", userFeatures.features);
   };
 
   return (
