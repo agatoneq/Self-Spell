@@ -76,7 +76,6 @@ const PatienceGame = () => {
 
     localStorage.setItem("userFeatures", JSON.stringify(updatedFeatures));
 
-    console.log("Updated user features:", updatedFeatures);
   };
 
 

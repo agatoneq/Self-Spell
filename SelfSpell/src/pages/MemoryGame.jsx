@@ -100,7 +100,6 @@ const MemoryGame = () => {
 
         // Save updated features back to localStorage
         localStorage.setItem("userFeatures", JSON.stringify(newFeatures));
-        console.log("Updated user features:", newFeatures);
       };
 
       updateUserFeatures();

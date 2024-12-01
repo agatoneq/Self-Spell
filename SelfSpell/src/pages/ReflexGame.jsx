@@ -116,7 +116,6 @@ const ReflexGame = () => {
         userFeatures.features = updatedFeatures;
         localStorage.setItem("userFeatures", JSON.stringify(userFeatures));
 
-        console.log("Zaktualizowane cechy użytkownika:", userFeatures.features);
       }
     }
   };

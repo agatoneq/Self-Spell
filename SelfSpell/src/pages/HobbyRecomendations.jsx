@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 // Update hardcoded hobbies to include feature arrays
 const hardcodedHobbies = [
   {
@@ -31,38 +30,44 @@ const HobbyRecommendations = () => {
     const calculateDistances = () => {
       try {
         // Get user features from localStorage
-        const userFeatures = JSON.parse(localStorage.getItem("userFeatures"));
-        if (!userFeatures || userFeatures.length !== 10) {
-          throw new Error("Invalid user features in localStorage");
+        let userFeatures = JSON.parse(localStorage.getItem("userFeatures"));
+        if (!Array.isArray(userFeatures) || userFeatures.length !== 10) {
+          userFeatures = Array(10).fill(0.0); // Default to an empty array or default values
+          localStorage.setItem("userFeatures", JSON.stringify(userFeatures)); // Save the default value to localStorage
         }
 
         // Function to calculate Euclidean distance
         const calculateDistance = (hobbyFeatures, userFeatures) => {
           return hobbyFeatures.reduce((sum, feature, index) => {
-              let distance = Math.pow(feature - userFeatures[index], 2);
-        
-              // Check if user feature is -1 and hobby feature > 0.5
-              if (userFeatures[index] === -1 && feature > 0.5) {
-                distance = Infinity;
-              }
-        
-              // Check if user feature is 1 and hobby feature < -0.5
-              if (userFeatures[index] === 1 && feature < -0.5) {
-                distance = Infinity;
-              }
-             // console.log("Odległość:", userFeatures[index], feature, sum + distance);
-              return sum + distance;
-            }, 0)
+            let distance = Math.pow(feature - userFeatures[index], 2);
+
+            // Check if user feature is -1 and hobby feature > 0.5
+            if (userFeatures[index] === -1 && feature > 0.5) {
+              distance = Infinity;
+            }
+
+            // Check if user feature is 1 and hobby feature < -0.5
+            if (userFeatures[index] === 1 && feature < -0.5) {
+              distance = Infinity;
+            }
+            return sum + distance;
+          }, 0);
         };
-        
 
         // Map hardcoded hobbies with calculated distances
-        const hobbiesWithDistances = hardcodedHobbies.map((hobby) => ({
-          ...hobby,
-          distance: parseFloat(
-            calculateDistance(hobby.features, userFeatures).toFixed(2)
-          ),
-        }));
+        const hobbiesWithDistances = hardcodedHobbies.map((hobby) => {
+          // Check if hobby features are valid, if not set them to [0.0, 0.0, ..., 0.0]
+          const validHobbyFeatures = Array.isArray(hobby.features) && hobby.features.length === 10
+            ? hobby.features
+            : Array(10).fill(0.0); // Default features if invalid
+
+          return {
+            ...hobby,
+            distance: parseFloat(
+              calculateDistance(validHobbyFeatures, userFeatures).toFixed(2)
+            ),
+          };
+        });
 
         // Sort hobbies by distance (ascending)
         const sortedHobbies = hobbiesWithDistances.sort(
