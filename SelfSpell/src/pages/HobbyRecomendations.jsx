@@ -37,13 +37,23 @@ const HobbyRecommendations = () => {
 
         // Function to calculate Euclidean distance
         const calculateDistance = (hobbyFeatures, userFeatures) => {
-          return Math.sqrt(
-            hobbyFeatures.reduce(
-              (sum, feature, index) => sum + Math.pow(feature - userFeatures[index], 2),
-              0
-            )
-          );
+          return hobbyFeatures.reduce((sum, feature, index) => {
+              let distance = Math.pow(feature - userFeatures[index], 2);
+        
+              // Check if user feature is -1 and hobby feature > 0.5
+              if (userFeatures[index] === -1 && feature > 0.5) {
+                distance = Infinity;
+              }
+        
+              // Check if user feature is 1 and hobby feature < -0.5
+              if (userFeatures[index] === 1 && feature < -0.5) {
+                distance = Infinity;
+              }
+             // console.log("Odległość:", userFeatures[index], feature, sum + distance);
+              return sum + distance;
+            }, 0)
         };
+        
 
         // Map hardcoded hobbies with calculated distances
         const hobbiesWithDistances = hardcodedHobbies.map((hobby) => ({
@@ -73,12 +83,20 @@ const HobbyRecommendations = () => {
     calculateDistances();
   }, []); // Empty dependency array as it only depends on localStorage
 
+  const handleHobbyClick = (hobby) => {
+    console.log(`Clicked hobby: ${hobby.name}, Alignment: ${hobby.distance}`);
+  };
+
   return (
     <section className="hobby-recommendations">
       <h2>Polecane hobby:</h2>
       <div className="hobbies-container">
         {hobbies.map((hobby, index) => (
-          <Link to={`/hobby/${encodeURIComponent(hobby.name)}`} key={index}>
+          <Link
+            to={`/hobby/${encodeURIComponent(hobby.name)}`}
+            key={index}
+            onClick={() => handleHobbyClick(hobby)}
+          >
             <div className="hobby-block">
               <img src={hobby.image} alt={hobby.name} />
               <h3>{hobby.name}</h3>
